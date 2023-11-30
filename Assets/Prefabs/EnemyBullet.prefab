@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137fc7eb07fff0d4abcf2073c0f16ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLife: 5
-  bulletRotation: 0
-  bulletSpeed: 1
+  bulletLife: 1.5
+  bulletRotation: 90
+  bulletSpeed: 25
