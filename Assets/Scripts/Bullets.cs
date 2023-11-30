@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBullets : MonoBehaviour
+public class Bullets : MonoBehaviour
 {
     [Header("Bullet Stats")]
     public float bulletLife;
@@ -25,6 +25,9 @@ public class EnemyBullets : MonoBehaviour
             Destroy(this.gameObject);
         timer += Time.deltaTime;
         transform.position = Movement(timer);
+
+        if (gameObject.transform.position.y < -9 || gameObject.transform.position.y > 9 || gameObject.transform.position.x < -10 || gameObject.transform.position.x > 10)
+            Destroy(gameObject);
     }
 
     private Vector2 Movement(float timer)
@@ -33,4 +36,6 @@ public class EnemyBullets : MonoBehaviour
         float y = timer * bulletSpeed * transform.right.y;
         return new Vector2(x + spawnPoint.x, y + spawnPoint.y);
     }
+
+    
 }

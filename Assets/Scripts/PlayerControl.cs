@@ -94,7 +94,7 @@ public class PlayerControl : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+            //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
         }
         //Shoot Bombs
     }

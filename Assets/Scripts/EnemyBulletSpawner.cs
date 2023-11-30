@@ -35,8 +35,8 @@ public class EnemyBulletSpawner : MonoBehaviour
         if (bullet)
         {
             spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            spawnedBullet.GetComponent<EnemyBullets>().bulletSpeed = bulletSpeed;
-            spawnedBullet.GetComponent<EnemyBullets>().bulletLife = bulletLife;
+            spawnedBullet.GetComponent<Bullets>().bulletSpeed = bulletSpeed;
+            spawnedBullet.GetComponent<Bullets>().bulletLife = bulletLife;
             spawnedBullet.transform.rotation = transform.rotation;
         }
     }
