@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
+    enum BulletType { Homing, NonHoming }
+
     [Header("Bullet Stats")]
     public float bulletLife;
     public float bulletRotation;
     public float bulletSpeed;
+    public float bulletDamage;
 
     private Vector2 spawnPoint;
     private float timer = 0f;
@@ -20,7 +23,7 @@ public class Bullets : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         if (timer > bulletLife)
             Destroy(this.gameObject);
         timer += Time.deltaTime;

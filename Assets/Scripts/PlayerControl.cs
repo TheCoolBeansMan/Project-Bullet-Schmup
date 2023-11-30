@@ -10,7 +10,7 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody2D playerRB;
 
     [Header("Player Shooting")]
-    public Transform bulletSpawnPoint;
+    public Transform[] bulletSpawnPointList;
     public GameObject bulletPrefab;
     public float bulletSpeed;
     public float fireRate;
@@ -35,31 +35,6 @@ public class PlayerControl : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-    }
-
-    //Handles Hitboxes
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "BlackEnemyBullet")
-        {
-            //Trigger Graze Sound and Visuals
-            //Increase Color Graze Meter
-        }
-        if (collision.tag == "RedEnemyBullet")
-        {
-            //Trigger Graze Sound and Visuals
-            //Increase Color Graze Meter
-        }
-        if (collision.tag == "BlueEnemyBullet")
-        {
-            //Trigger Graze Sound and Visuals
-            //Increase Color Graze Meter
-        }
-
-        if (collision.tag == "EnemyHitbox")
-        {
-            //Call Death Method
-        }
     }
 
     private void ProcessInputs()
@@ -90,31 +65,17 @@ public class PlayerControl : MonoBehaviour
     //Manages Shooting and Bombs
     private void Shooting()
     {
-        if (Input.GetKey(KeyCode.Z) && Time.time > nextFire) 
+        if (Input.GetKey(KeyCode.Z) && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
-            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-            //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+            for (int i = 0; i < 4; i++)
+            {
+                Transform bulletSpawnPoint = bulletSpawnPointList[i];
+                nextFire = Time.time + fireRate;
+                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+            }
         }
         //Shoot Bombs
-    }
 
-    //Manages current meter status aswell as appropriate conditions
-    private void StatHandler()
-    {
-        //Manage Meter Updates
-        //Manage Life Count
-        //Manage Bomb Count
-        //Manage Shot Tier
-        //Update Meter UI, Life and Bomb Icons
-    }
-
-    //Handles Player Death
-    private void Death()
-    {
-        //Trigger Player Death Sound
-        //Kill Player
-        //Respawn Player
-        //Allow for Bomb Death Condition
     }
 }
