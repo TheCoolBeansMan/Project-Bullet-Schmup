@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - HBR
   layers:
   - Default
   - TransparentFX
@@ -12,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Bullets
+  - Actors
+  - Background
   - 
   - 
   - 
@@ -41,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Backdrop
+    uniqueID: 1578120883
+    locked: 0
+  - name: Bullet
+    uniqueID: 3623895385
+    locked: 0
+  - name: Actor
+    uniqueID: 3255724601
     locked: 0
