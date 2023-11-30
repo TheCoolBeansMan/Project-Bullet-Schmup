@@ -67,7 +67,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z) && Time.time > nextFire)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 1; i++)
             {
                 Transform bulletSpawnPoint = bulletSpawnPointList[i];
                 nextFire = Time.time + fireRate;

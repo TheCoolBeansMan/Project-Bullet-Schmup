@@ -29,7 +29,7 @@ public class Bullets : MonoBehaviour
         timer += Time.deltaTime;
         transform.position = Movement(timer);
 
-        if (gameObject.transform.position.y < -9 || gameObject.transform.position.y > 9 || gameObject.transform.position.x < -10 || gameObject.transform.position.x > 10)
+        if (gameObject.transform.position.y < -10 || gameObject.transform.position.y > 10 || gameObject.transform.position.x < -11 || gameObject.transform.position.x > 11)
             Destroy(gameObject);
     }
 

@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
             current = (current + 1) % waypoints.Length;
         }
 
-        if (gameObject.transform.position.y < -9 || gameObject.transform.position.x < -10 || gameObject.transform.position.x > 10)
+        if (gameObject.transform.position.y < -10 || gameObject.transform.position.x < -11 || gameObject.transform.position.x > 11)
             Destroy(gameObject);
 
         Vector2 direction = waypoints[current].position - transform.position;
