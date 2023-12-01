@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float regularSpeed;
     public float focusSpeed;
     public Rigidbody2D playerRB;
+    public GameObject hitbox;
 
     [Header("Player Shooting")]
     public Transform[] bulletSpawnPointList;
@@ -23,6 +24,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         moveSpeed = regularSpeed;
+        hitbox.SetActive(false);
     }
     //Update Once per Frame, Use for Proccessing Inputs
     private void Update()
@@ -49,10 +51,12 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed = focusSpeed;
+            hitbox.SetActive(true);
         }
         else
         {
             moveSpeed = regularSpeed;
+            hitbox.SetActive(false);
         }
     }
 
@@ -69,7 +73,7 @@ public class PlayerControl : MonoBehaviour
         {
             for (int i = 0; i < 1; i++)
             {
-                Transform bulletSpawnPoint = bulletSpawnPointList[i];
+              Transform bulletSpawnPoint = bulletSpawnPointList[i];
                 nextFire = Time.time + fireRate;
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
