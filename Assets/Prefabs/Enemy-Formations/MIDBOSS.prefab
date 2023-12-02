@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6224435163098487150}
   m_Layer: 8
   m_Name: MIDBOSS
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,8 +237,8 @@ GameObject:
   - component: {fileID: 1454432317471103409}
   - component: {fileID: 6244371883252628886}
   m_Layer: 8
-  m_Name: Enemy
-  m_TagString: Untagged
+  m_Name: Midboss
+  m_TagString: midboss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: target
-  maxHitpoints: 130
-  hitpoints: 130
+  maxHitpoints: 80
+  hitpoints: 80
 --- !u!61 &6244371883252628886
 BoxCollider2D:
   m_ObjectHideFlags: 0

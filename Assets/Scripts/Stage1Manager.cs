@@ -20,12 +20,14 @@ public class Stage1Manager : MonoBehaviour
 
     public GameObject boss;
 
-
+    public Destructable currentHP;
 
     private float timer = 0f;
-    private float midbossTimer = 0f;
+    //private float midbossTimer = 0f;
     public bool timeActive = false;
-    private int lastSecondLogged = -1; 
+    private int lastSecondLogged = -1;
+    private bool midbossDead = false;
+
 
     void Start()
     {
@@ -48,11 +50,15 @@ public class Stage1Manager : MonoBehaviour
         //Invoke("midboss", 30f);
         //Invoke("FormationD", 32f);
 
+
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
+        if (timeActive)
+        {
+            timer += Time.deltaTime;
+        }
 
         if (timeActive && timer >= 2f)
         {
@@ -65,14 +71,19 @@ public class Stage1Manager : MonoBehaviour
             FormationC();
         }
 
-        if (timeActive && timer >= 25f)
+        if (timeActive && timer >= 23f)
         {
             Midboss();
         }
 
-        if (!timeActive && timer >= 32f) //Needs to be changed so that this triggers upon boss defeat
+        if (timeActive && timer >= 35f) //Needs to be changed so that this triggers upon boss defeat
         {
             FormationD();
+        }
+
+        if (timeActive && timer >= 60f)
+        {
+            Boss();
         }
 
         int currentSecond = Mathf.FloorToInt(timer);
@@ -122,10 +133,16 @@ public class Stage1Manager : MonoBehaviour
 
     void Midboss()
     {
+        
         if (midboss != null)
         {
             midboss.SetActive(true);
-            timeActive = false;
+
+            if(GameObject.FindGameObjectsWithTag("midboss") == null)
+            {
+                midbossDead = true;
+                midboss.SetActive(false);
+            }
         }
         else
             Debug.Log("Debug Warning: midboss not assigned.");

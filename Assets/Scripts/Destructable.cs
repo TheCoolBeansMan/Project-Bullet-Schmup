@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class Destructable : MonoBehaviour
     {
         Bullets bullet = collision.GetComponent<Bullets>();
         float damage = bullet.GetComponent<Bullets>().bulletDamage;
+
         if (bullet != null && collision.tag == target)
         {
             hitpoints -= damage;
@@ -27,7 +29,6 @@ public class Destructable : MonoBehaviour
             if (hitpoints <= 0)
             {
                 Destroy(gameObject);
-                CheckMidboss();
                 CheckBoss();
             }
 
@@ -35,27 +36,13 @@ public class Destructable : MonoBehaviour
         }
     }
 
-    void CheckMidboss()
-    {
-        GameObject midboss = GameObject.FindGameObjectWithTag("midboss");
-        if (midboss != null)
-        {
-            if (hitpoints <= 0)
-            {
-
-            }
-        }
-    }
-
     void CheckBoss()
     {
-        GameObject midboss = GameObject.FindGameObjectWithTag("boss");
-        if (midboss != null)
+        stage1 = GetComponent<Stage1Manager>();
+        GameObject midbossParent = GameObject.Find("MIDBOSS");
+        if (GameObject.FindGameObjectWithTag("midboss") != midbossParent)
         {
-            if (hitpoints <= 0)
-            {
-
-            }
+            midbossParent.SetActive(false);
         }
     }
 }
