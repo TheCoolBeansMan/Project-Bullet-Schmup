@@ -15,6 +15,14 @@ public class PlayerControl : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed;
     public float fireRate;
+    public int gunTier;
+    public int lives;
+    public int bombs;
+
+    [Header("Player Stats")]
+    public GameObject[] playerLives;
+    public GameObject[] playerBombs;
+    public GameObject[] playerPower;
 
     private Vector2 moveDirection;
     private float moveSpeed;
@@ -25,7 +33,16 @@ public class PlayerControl : MonoBehaviour
     {
         moveSpeed = regularSpeed;
         hitbox.SetActive(false);
-    }
+        gunTier = 1;
+        lives = 3;
+        bombs = 2;
+        playerLives[0].SetActive(true);
+        playerLives[1].SetActive(true);
+        playerLives[2].SetActive(true);
+        playerBombs[0].SetActive(true);
+        playerBombs[1].SetActive(true);
+        playerPower[0].SetActive(true);
+}
     //Update Once per Frame, Use for Proccessing Inputs
     private void Update()
     {
@@ -71,7 +88,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Z) && Time.time > nextFire)
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < gunTier; i++)
             {
               Transform bulletSpawnPoint = bulletSpawnPointList[i];
                 nextFire = Time.time + fireRate;
@@ -80,6 +97,19 @@ public class PlayerControl : MonoBehaviour
             }
         }
         //Shoot Bombs
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            //Trigger Bomb
+            playerBombs[bombs - 1].SetActive(false);
+            bombs--;
+        }
+    }
 
+    private void Death()
+    {
+        playerLives[lives - 1].SetActive(false);
+        lives--;
+        playerPower[gunTier - 1].SetActive(false);
+        gunTier--;
     }
 }
