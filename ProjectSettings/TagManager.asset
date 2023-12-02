@@ -9,6 +9,9 @@ TagManager:
   - target
   - midboss
   - boss
+  - RedBullet
+  - BlueBullet
+  - BlackBullet
   layers:
   - Default
   - TransparentFX
