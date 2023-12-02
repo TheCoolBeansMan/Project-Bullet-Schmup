@@ -8,12 +8,14 @@ public class Destructable : MonoBehaviour
     public float maxHitpoints;
     public float hitpoints;
 
+    public Stage1Manager stage1;
+
     private void Start()
     {
         hitpoints = maxHitpoints;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         Bullets bullet = collision.GetComponent<Bullets>();
         float damage = bullet.GetComponent<Bullets>().bulletDamage;
@@ -25,6 +27,34 @@ public class Destructable : MonoBehaviour
             if (hitpoints <= 0)
             {
                 Destroy(gameObject);
+                CheckMidboss();
+                CheckBoss();
+            }
+
+
+        }
+    }
+
+    void CheckMidboss()
+    {
+        GameObject midboss = GameObject.FindGameObjectWithTag("midboss");
+        if (midboss != null)
+        {
+            if (hitpoints <= 0)
+            {
+
+            }
+        }
+    }
+
+    void CheckBoss()
+    {
+        GameObject midboss = GameObject.FindGameObjectWithTag("boss");
+        if (midboss != null)
+        {
+            if (hitpoints <= 0)
+            {
+
             }
         }
     }

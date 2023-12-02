@@ -23,10 +23,14 @@ public class Stage1Manager : MonoBehaviour
 
 
     private float timer = 0f;
+    private float midbossTimer = 0f;
+    public bool timeActive = false;
     private int lastSecondLogged = -1; 
 
     void Start()
     {
+        timeActive= true;
+
         enemyA1.SetActive(false);
         enemyA2.SetActive(false);
         enemyB1.SetActive(false);
@@ -38,17 +42,38 @@ public class Stage1Manager : MonoBehaviour
         enemyD.SetActive(false);
         boss.SetActive(false);
 
-        Invoke("FormationA", 2f);
-        Invoke("FormationB", 10f);
-        Invoke("FormationC", 10f);
+        //Invoke("FormationA", 2f);
+        //Invoke("FormationB", 10f);
+        //Invoke("FormationC", 10f);
         //Invoke("midboss", 30f);
-        Invoke("FormationD", 32f);
+        //Invoke("FormationD", 32f);
 
     }
 
     void Update()
     {
         timer += Time.deltaTime;
+
+        if (timeActive && timer >= 2f)
+        {
+            FormationA();
+        }
+
+        if (timeActive && timer >= 10f)
+        {
+            FormationB();
+            FormationC();
+        }
+
+        if (timeActive && timer >= 25f)
+        {
+            Midboss();
+        }
+
+        if (!timeActive && timer >= 32f) //Needs to be changed so that this triggers upon boss defeat
+        {
+            FormationD();
+        }
 
         int currentSecond = Mathf.FloorToInt(timer);
         if (currentSecond != lastSecondLogged)
@@ -100,6 +125,7 @@ public class Stage1Manager : MonoBehaviour
         if (midboss != null)
         {
             midboss.SetActive(true);
+            timeActive = false;
         }
         else
             Debug.Log("Debug Warning: midboss not assigned.");
@@ -121,6 +147,7 @@ public class Stage1Manager : MonoBehaviour
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
             boss.SetActive(true);
+            timeActive = false;
         }
         else
             Debug.Log("Debug Warning: boss not assigned.");
