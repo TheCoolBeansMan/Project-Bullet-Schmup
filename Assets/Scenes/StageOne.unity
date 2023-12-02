@@ -351,6 +351,11 @@ Transform:
   m_Father: {fileID: 1786019763}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &24125570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7072725771264945488, guid: 70a5ac86f330acf479e468e92036ead2, type: 3}
+  m_PrefabInstance: {fileID: 861559904641804402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &29140693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4396,6 +4401,7 @@ MonoBehaviour:
   enemyC2: {fileID: 1782168861}
   enemyC3: {fileID: 373801535}
   midboss: {fileID: 1053935788}
+  midbossEnemy: {fileID: 24125570}
   enemyD: {fileID: 175991860846430566}
   boss: {fileID: 7652447503613804052}
   currentHP: {fileID: 0}

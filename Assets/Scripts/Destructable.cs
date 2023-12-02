@@ -29,14 +29,14 @@ public class Destructable : MonoBehaviour
             if (hitpoints <= 0)
             {
                 Destroy(gameObject);
-                CheckBoss();
+                //CheckBoss();
             }
 
 
         }
     }
 
-    void CheckBoss()
+    /***void CheckBoss()
     {
         stage1 = GetComponent<Stage1Manager>();
         GameObject midbossParent = GameObject.Find("MIDBOSS");
@@ -44,5 +44,5 @@ public class Destructable : MonoBehaviour
         {
             midbossParent.SetActive(false);
         }
-    }
+    }***/
 }

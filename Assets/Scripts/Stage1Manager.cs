@@ -15,6 +15,7 @@ public class Stage1Manager : MonoBehaviour
     public GameObject enemyC3;
 
     public GameObject midboss;
+    public GameObject midbossEnemy;
 
     public GameObject enemyD;
 
@@ -27,7 +28,6 @@ public class Stage1Manager : MonoBehaviour
     public bool timeActive = false;
     private int lastSecondLogged = -1;
     private bool midbossDead = false;
-
 
     void Start()
     {
@@ -76,9 +76,10 @@ public class Stage1Manager : MonoBehaviour
             Midboss();
         }
 
-        if (timeActive && timer >= 35f) //Needs to be changed so that this triggers upon boss defeat
+        if (midbossEnemy == null) //Needs to be changed so that this triggers upon boss defeat
         {
             FormationD();
+            Debug.Log("Trigger Next Formation");
         }
 
         if (timeActive && timer >= 60f)
