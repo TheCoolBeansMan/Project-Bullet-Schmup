@@ -27,6 +27,7 @@ public class PlayerControl : MonoBehaviour
     private Vector2 moveDirection;
     private float moveSpeed;
     private float nextFire;
+    private bool invincible;
 
     //On Start Values
     private void Start()
@@ -105,11 +106,41 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "PlayerBullet")
+        {
+            Death();
+        }   
+    }
+
     private void Death()
     {
-        playerLives[lives - 1].SetActive(false);
-        lives--;
-        playerPower[gunTier - 1].SetActive(false);
-        gunTier--;
+        if (lives <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else if (invincible == false)
+        {
+            //Trigger Animation
+            playerLives[lives - 1].SetActive(false);
+            lives--;
+            playerPower[gunTier - 1].SetActive(false);
+            gunTier--;
+            if (gunTier <= 0)
+            {
+                gunTier = 1;
+                playerPower[0].SetActive(true);
+            }
+            invincible = true;
+        }
+        else if (invincible == true)
+        {
+            for (float i = 0; i <= 5; i += Time.deltaTime)
+            {
+                invincible = true;
+            }
+            invincible = false;
+        }
     }
 }
