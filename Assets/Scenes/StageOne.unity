@@ -9731,6 +9731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MIDBOSS
       objectReference: {fileID: 0}
+    - target: {fileID: 2019258917022162080, guid: 70a5ac86f330acf479e468e92036ead2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6224435163098487150, guid: 70a5ac86f330acf479e468e92036ead2, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -10569,7 +10573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5142086206670188827, guid: 65ee27bf681ea8649acb0c39dbeab34a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7024376512545385256, guid: 65ee27bf681ea8649acb0c39dbeab34a, type: 3}
       propertyPath: waypoints.Array.data[0]

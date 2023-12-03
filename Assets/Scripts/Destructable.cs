@@ -9,7 +9,7 @@ public class Destructable : MonoBehaviour
     public float maxHitpoints;
     public float hitpoints;
 
-    public Stage1Manager stage1;
+    //public Stage1Manager stage1;
 
     private void Start()
     {

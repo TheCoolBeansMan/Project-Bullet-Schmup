@@ -5,20 +5,27 @@ using UnityEngine;
 
 public class Stage2Manager : MonoBehaviour
 {
-    public GameObject enemyA1;
-    public GameObject enemyA2; 
+    public GameObject enemyE;
+    public GameObject enemyF; 
+    public GameObject enemyG;
 
-    public GameObject enemyB1;
-    public GameObject enemyB2;
-    public GameObject enemyC1;
-    public GameObject enemyC2; 
-    public GameObject enemyC3;
+    public GameObject enemyH1;
+    public GameObject enemyH2;
+    public GameObject enemyH3;
+    public GameObject enemyH4;
 
-    public GameObject midboss;
+    public GameObject midboss2;
+    public GameObject midbossEnemy2;
 
-    public GameObject enemyD;
+    public GameObject enemyI;
+    public GameObject enemyI1;
+    public GameObject enemyI2;
+    public GameObject enemyI3;
+    public GameObject enemyI4;
+    public GameObject enemyI5;
 
-    public GameObject boss;
+    public GameObject boss2;
+    public GameObject bossEnemy2;
 
     public Destructable currentHP;
 
@@ -33,22 +40,20 @@ public class Stage2Manager : MonoBehaviour
     {
         timeActive= true;
 
-        enemyA1.SetActive(false);
-        enemyA2.SetActive(false);
-        enemyB1.SetActive(false);
-        enemyB2.SetActive(false);
-        enemyC1.SetActive(false);
-        enemyC2.SetActive(false);
-        enemyC3.SetActive(false);
-        midboss.SetActive(false);
-        enemyD.SetActive(false);
-        boss.SetActive(false);
+        enemyE.SetActive(false);
+        enemyF.SetActive(false);
+        enemyG.SetActive(false);
 
-        //Invoke("FormationA", 2f);
-        //Invoke("FormationB", 10f);
-        //Invoke("FormationC", 10f);
-        //Invoke("midboss", 30f);
-        //Invoke("FormationD", 32f);
+        enemyH1.SetActive(false);
+        enemyH2.SetActive(false);
+        enemyH3.SetActive(false);
+        enemyH4.SetActive(false);
+
+        midboss2.SetActive(false);
+
+        enemyI.SetActive(false);
+
+        boss2.SetActive(false);
 
 
     }
@@ -60,31 +65,88 @@ public class Stage2Manager : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        if (timeActive && timer >= 2f)
+        if (timeActive && timer >= 5f)
         {
-            FormationA();
+            FormationE();
         }
 
-        if (timeActive && timer >= 10f)
+        if (timeActive && timer >= 11f)
         {
-            FormationB();
-            FormationC();
+            enemyE.SetActive(false);
         }
 
-        if (timeActive && timer >= 23f)
+        if (timeActive && timer >= 13f)
+        {
+            FormationF();
+        }
+
+        if (timeActive && timer >= 19f)
+        {
+            enemyF.SetActive(false);
+        }
+
+        if (timeActive && timer >= 21f)
+        {
+            FormationG();
+        }
+
+        if (timeActive && timer >= 30f)
+        {
+            enemyG.SetActive(false);
+        }
+
+        if (timeActive && timer >= 31f)
+        {
+            FormationH();
+        }
+
+        if (timeActive && timer >= 33)
+        {
+            FormationH2();
+        }
+
+        if (timeActive && timer >= 38)
+        {
+            FormationH3();
+        }
+
+        if (timeActive && timer >= 46f)
+        {
+            enemyH1.SetActive(false);
+        }
+
+        if (timeActive && timer >= 48f)
+        {
+            enemyH2.SetActive(false);
+        }
+
+        if (timeActive && timer >= 50f)
+        {
+            enemyH3.SetActive(false);
+        }
+
+        if (timeActive && timer >= 53f)
+        {
+            enemyH4.SetActive(false);
+        }
+
+        if (timeActive && timer >= 50f)
         {
             Midboss();
         }
 
-        if (timeActive && timer >= 35f) //Needs to be changed so that this triggers upon boss defeat
+        if (midbossEnemy2 == null)
         {
-            FormationD();
+            FormationI();
+            Debug.Log("Trigger Next Formation");
         }
 
-        if (timeActive && timer >= 60f)
+        if (enemyI1 == null && enemyI2 == null && enemyI3 == null && enemyI4 == null && enemyI5 == null)
         {
-            Boss();
+            Invoke("Boss2", 5f);
         }
+
+
 
         int currentSecond = Mathf.FloorToInt(timer);
         if (currentSecond != lastSecondLogged)
@@ -93,77 +155,105 @@ public class Stage2Manager : MonoBehaviour
             Debug.Log("Time: " + currentSecond + " seconds");
         } //Debug Timer that counts seconds via Update
 
-        //Put trigger checks for midboss, Formation D, and Boss endings here...
     }
 
-    void FormationA() //[A1, A2]: Black Fairies shmoove across from the top screen and then off to the side in symmetrical but delayed waves
+    void FormationE() // Black books spawn in and fire
     {
-        if (enemyA1 != null || enemyA2 != null)
+        if (enemyE != null)
         {
-            enemyA1.SetActive(true);
-            enemyA2.SetActive(true);
+            enemyE.SetActive(true);
+
         }
         else
-            Debug.Log("Debug Warning: enemyA1 or A2 not assigned.");
+            Debug.Log("Debug Warning: enemyE not assigned.");
     }
 
-    void FormationB() //[B1, B2]: Red and Blue Fairies run down the sides of the screen and shoot at the player
+    void FormationF() // More books, but flipped
     {
-        if (enemyB1 != null || enemyB2 != null)
+        if (enemyF != null)
         {
-            enemyB1.SetActive(true);
-            enemyB2.SetActive(true);
+            enemyF.SetActive(true);
         }
         else
-            Debug.Log("Debug Warning: enemyB1 or B2 not assigned.");
+            Debug.Log("Debug Warning: enemyF not assigned.");
     }
 
-    void FormationC()//[C1, C2]: A formation of BLack Birds will spiral around then exit the screen. This is followed by a formation of blue and red birds.
-                     //They goes at the same time as Formation B.
+    void FormationG()// A formation of Blue books and a couple red books
     {
-        if (enemyC1 != null || enemyC2 != null || enemyC3 != null)
+        if (enemyG != null)
         {
-            enemyC1.SetActive(true);
-            enemyC2.SetActive(true);
-            enemyC3.SetActive(true);
+            enemyG.SetActive(true);
         }
         else
-            Debug.Log("Debug Warning: enemyC1, C2, or C3 not assigned.");
+            Debug.Log("Debug Warning: enemyG not assigned.");
     }
 
-    void Midboss()
+    void FormationH()// Black bats serpantine from the sides of the screen
     {
-        
-        if (midboss != null)
+        if (enemyH1 != null || enemyH2 != null)
         {
-            midboss.SetActive(true);
+            enemyH1.SetActive(true);
+            enemyH2.SetActive(true);
+        }
+        else
+            Debug.Log("Debug Warning: enemyG not assigned.");
+    }
 
-            if(GameObject.FindGameObjectsWithTag("midboss") == null)
+    void FormationH2()// Blue and Red Bats fly down from the top
+    {
+        if (enemyH3 != null)
+        {
+            enemyH3.SetActive(true);
+        }
+        else
+            Debug.Log("Debug Warning: enemyG not assigned.");
+    }
+
+    void FormationH3()// Mirror of above
+    {
+        if (enemyH4 != null)
+        {
+            enemyH4.SetActive(true);
+        }
+        else
+            Debug.Log("Debug Warning: enemyG not assigned.");
+    }
+
+    void Midboss() //Vivia appears
+    {
+
+        if (midboss2 != null)
+        {
+            timeActive = false;
+            midboss2.SetActive(true);
+
+            if (GameObject.FindGameObjectsWithTag("midboss") == null)
             {
+                timeActive = true;
                 midbossDead = true;
-                midboss.SetActive(false);
+                midboss2.SetActive(false);
             }
         }
         else
             Debug.Log("Debug Warning: midboss not assigned.");
     }
 
-    void FormationD()
+    void FormationI() //BALLS!!
     {
-        if (enemyD != null)
+        if (enemyI != null)
         {
-            enemyD.SetActive(true);
+            enemyI.SetActive(true);
         }
         else
             Debug.Log("Debug Warning: enemyD not assigned.");
     }
 
-    void Boss()
+    void Boss2() //Vivia appears again for proper fight
     {
-        if (boss != null)
+        if (boss2 != null)
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss.SetActive(true);
+            boss2.SetActive(true);
             timeActive = false;
         }
         else
