@@ -2377,6 +2377,7 @@ MonoBehaviour:
   healthDecrease: 5
   bombDecrease: 5
   powerDecrease: 5
+  player: {fileID: 2137775459}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,8 +4504,10 @@ MonoBehaviour:
   enemyC2: {fileID: 1782168861}
   enemyC3: {fileID: 373801535}
   midboss: {fileID: 1053935788}
+  midbossEnemy: {fileID: 0}
   enemyD: {fileID: 175991860846430566}
   boss: {fileID: 7652447503613804052}
+  currentHP: {fileID: 0}
   timeActive: 0
 --- !u!1 &1051564312
 GameObject:
@@ -8110,7 +8113,7 @@ PrefabInstance:
     - target: {fileID: 2737365629517078178, guid: 0d35581e68df3a8428d6a667e23a79b5, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 2678450782924257171, guid: fe4d4a8d83530884aa2c7a23c970d226, type: 3}
+      objectReference: {fileID: 2678450782924257171, guid: e9f309497912d4b4a86ba25871d8b0a8, type: 3}
     - target: {fileID: 2737365629517078178, guid: 0d35581e68df3a8428d6a667e23a79b5, type: 3}
       propertyPath: bulletLife
       value: 3
@@ -9045,7 +9048,7 @@ GameObject:
   - component: {fileID: 2137775464}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9131,7 +9134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137775459}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.54, y: -6, z: -0.16726965}
+  m_LocalPosition: {x: -7, y: -6, z: -0.16726965}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

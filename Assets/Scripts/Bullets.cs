@@ -11,14 +11,22 @@ public class Bullets : MonoBehaviour
     public float bulletRotation;
     public float bulletSpeed;
     public float bulletDamage;
+    public bool homing;
 
     private Vector2 spawnPoint;
     private float timer = 0f;
+    private GameObject player;
+    private float playerX;
+    private float playerY;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerX = player.transform.position.x;
+        playerY = player.transform.position.y;
+
     }
 
     // Update is called once per frame
@@ -35,10 +43,20 @@ public class Bullets : MonoBehaviour
 
     private Vector2 Movement(float timer)
     {
-        float x = timer * bulletSpeed * transform.right.x;
-        float y = timer * bulletSpeed * transform.right.y;
+        float x;
+        float y;
+
+        if (homing == true)
+        {
+            x = timer * (bulletSpeed / 5) * playerX;
+            y = timer * (bulletSpeed / 5) * playerY;
+        }
+        else
+        {
+            x = timer * bulletSpeed * transform.right.x;
+            y = timer * bulletSpeed * transform.right.y;
+        }
+
         return new Vector2(x + spawnPoint.x, y + spawnPoint.y);
     }
-
-    
 }

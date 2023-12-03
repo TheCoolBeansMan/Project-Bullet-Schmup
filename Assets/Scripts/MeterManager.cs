@@ -21,30 +21,42 @@ public class MeterManager : MonoBehaviour
     public int bombDecrease;
     public int powerDecrease;
 
-    PlayerControl player;
+    public GameObject player;
 
     private void Update()
     {
-        if (healthSlider.value == 100)
+        if (healthSlider.value >= 100 && player.GetComponent<PlayerControl>().lives <= 5)
         {
             healthGraze -= healthDecrease;
+            if (healthGraze <= 0)
+                healthGraze = 2;
             healthSlider.value = 0;
-            player.lives++;
-            player.playerLives[player.lives].SetActive(true);
+            if (player.GetComponent<PlayerControl>().lives == 5)
+                healthSlider.value = 100;
+            player.GetComponent<PlayerControl>().lives++;
+            player.GetComponent<PlayerControl>().playerLives[player.GetComponent<PlayerControl>().lives - 1].SetActive(true);
         }
-        if (bombSlider.value >= 100 && player.bombs <= 6)
+        if (bombSlider.value >= 100 && player.GetComponent<PlayerControl>().bombs <= 5)
         {
             bombGraze -= bombDecrease;
+            if (bombGraze <= 0)
+                bombGraze = 3;
             bombSlider.value = 0;
-            player.bombs++;
-            player.playerBombs[player.bombs].SetActive(true);
+            if (player.GetComponent<PlayerControl>().bombs == 5)
+                bombSlider.value = 100;
+            player.GetComponent<PlayerControl>().bombs++;
+            player.GetComponent<PlayerControl>().playerBombs[player.GetComponent<PlayerControl>().bombs - 1].SetActive(true);
         }
-        if (powerSlider.value >= 100 && player.gunTier <= 4)
+        if (powerSlider.value >= 100 && player.GetComponent<PlayerControl>().gunTier <= 3)
         {
             powerGraze -= powerDecrease;
+            if (powerGraze <= 0)
+                powerGraze = 5;
             powerSlider.value = 0;
-            player.gunTier++;
-            player.playerPower[player.gunTier].SetActive(true);
+            if (player.GetComponent<PlayerControl>().gunTier == 3)
+                powerSlider.value = 100;
+            player.GetComponent<PlayerControl>().gunTier++;
+            player.GetComponent<PlayerControl>().playerPower[player.GetComponent<PlayerControl>().gunTier - 1].SetActive(true);
         }
     }
 
