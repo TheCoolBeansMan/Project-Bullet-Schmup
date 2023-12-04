@@ -31,8 +31,8 @@ public class MeterManager : MonoBehaviour
             if (healthGraze <= 0)
                 healthGraze = 2;
             healthSlider.value = 0;
-            if (player.GetComponent<PlayerControl>().lives == 5)
-                healthSlider.value = 100;
+            //if (player.GetComponent<PlayerControl>().lives > 5)
+                //healthSlider.value = 100;
             player.GetComponent<PlayerControl>().lives++;
             player.GetComponent<PlayerControl>().playerLives[player.GetComponent<PlayerControl>().lives - 1].SetActive(true);
         }
@@ -42,8 +42,8 @@ public class MeterManager : MonoBehaviour
             if (bombGraze <= 0)
                 bombGraze = 3;
             bombSlider.value = 0;
-            if (player.GetComponent<PlayerControl>().bombs == 5)
-                bombSlider.value = 100;
+            //if (player.GetComponent<PlayerControl>().bombs > 5)
+                //bombSlider.value = 100;
             player.GetComponent<PlayerControl>().bombs++;
             player.GetComponent<PlayerControl>().playerBombs[player.GetComponent<PlayerControl>().bombs - 1].SetActive(true);
         }
@@ -53,8 +53,8 @@ public class MeterManager : MonoBehaviour
             if (powerGraze <= 0)
                 powerGraze = 5;
             powerSlider.value = 0;
-            if (player.GetComponent<PlayerControl>().gunTier == 3)
-                powerSlider.value = 100;
+            //if (player.GetComponent<PlayerControl>().gunTier > 3)
+                //powerSlider.value = 100;
             player.GetComponent<PlayerControl>().gunTier++;
             player.GetComponent<PlayerControl>().playerPower[player.GetComponent<PlayerControl>().gunTier - 1].SetActive(true);
         }
