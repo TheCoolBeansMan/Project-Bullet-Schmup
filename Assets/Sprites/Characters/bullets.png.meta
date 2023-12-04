@@ -106,6 +106,58 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,12 +165,12 @@ TextureImporter:
       name: bullets_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 325
-        width: 167
-        height: 125
+        x: 20
+        y: 328
+        width: 117
+        height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +186,12 @@ TextureImporter:
       name: bullets_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 325
-        width: 167
-        height: 125
+        x: 182
+        y: 328
+        width: 117
+        height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +207,12 @@ TextureImporter:
       name: bullets_2
       rect:
         serializedVersion: 2
-        x: 332
-        y: 325
-        width: 167
-        height: 125
+        x: 336
+        y: 329
+        width: 117
+        height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +228,12 @@ TextureImporter:
       name: bullets_3
       rect:
         serializedVersion: 2
-        x: 498
-        y: 316
-        width: 167
-        height: 125
+        x: 535
+        y: 324
+        width: 110
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +249,12 @@ TextureImporter:
       name: bullets_4
       rect:
         serializedVersion: 2
-        x: 664
-        y: 317
-        width: 167
-        height: 125
+        x: 685
+        y: 324
+        width: 110
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +270,12 @@ TextureImporter:
       name: bullets_5
       rect:
         serializedVersion: 2
-        x: 830
-        y: 318
-        width: 167
-        height: 125
+        x: 832
+        y: 324
+        width: 110
+        height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +291,12 @@ TextureImporter:
       name: bullets_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 150
-        width: 167
-        height: 163
+        x: 49
+        y: 153
+        width: 73
+        height: 149
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +312,12 @@ TextureImporter:
       name: bullets_7
       rect:
         serializedVersion: 2
-        x: 166
-        y: 150
-        width: 167
-        height: 160
+        x: 211
+        y: 153
+        width: 73
+        height: 149
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +333,12 @@ TextureImporter:
       name: bullets_8
       rect:
         serializedVersion: 2
-        x: 332
-        y: 150
-        width: 167
-        height: 160
+        x: 365
+        y: 153
+        width: 73
+        height: 149
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +354,12 @@ TextureImporter:
       name: bullets_9
       rect:
         serializedVersion: 2
-        x: 498
-        y: 164
-        width: 167
-        height: 150
+        x: 542
+        y: 170
+        width: 88
+        height: 139
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,12 +375,12 @@ TextureImporter:
       name: bullets_10
       rect:
         serializedVersion: 2
-        x: 664
-        y: 165
-        width: 167
-        height: 150
+        x: 694
+        y: 170
+        width: 88
+        height: 139
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,12 +396,12 @@ TextureImporter:
       name: bullets_11
       rect:
         serializedVersion: 2
-        x: 831
-        y: 165
-        width: 167
-        height: 150
+        x: 847
+        y: 170
+        width: 88
+        height: 139
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -365,12 +417,12 @@ TextureImporter:
       name: bullets_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 166.66667
-        height: 150
+        x: 20
+        y: 8
+        width: 130
+        height: 113
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,12 +438,12 @@ TextureImporter:
       name: bullets_13
       rect:
         serializedVersion: 2
-        x: 166
-        y: 0
-        width: 166.66667
-        height: 150
+        x: 180
+        y: 8
+        width: 130
+        height: 113
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -407,12 +459,12 @@ TextureImporter:
       name: bullets_14
       rect:
         serializedVersion: 2
-        x: 332
-        y: 0
-        width: 166.66667
-        height: 150
+        x: 334
+        y: 7
+        width: 130
+        height: 113
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -430,10 +482,10 @@ TextureImporter:
         serializedVersion: 2
         x: 498
         y: 0
-        width: 167
+        width: 155
         height: 165
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -451,10 +503,10 @@ TextureImporter:
         serializedVersion: 2
         x: 664
         y: 0
-        width: 167
+        width: 155
         height: 165
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -470,12 +522,12 @@ TextureImporter:
       name: bullets_17
       rect:
         serializedVersion: 2
-        x: 830
+        x: 834
         y: 0
-        width: 167
+        width: 155
         height: 165
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
