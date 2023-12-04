@@ -102,6 +102,7 @@ MonoBehaviour:
   bulletRotation: 90
   bulletSpeed: 25
   bulletDamage: 1
+  homing: 0
 --- !u!58 &-2093582134324335811
 CircleCollider2D:
   m_ObjectHideFlags: 0

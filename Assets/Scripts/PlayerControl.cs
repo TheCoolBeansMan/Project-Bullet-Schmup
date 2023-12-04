@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     public int gunTier;
     public int lives;
     public int bombs;
+    public GameObject fei;
 
     [Header("Player Stats")]
     public GameObject[] playerLives;
@@ -32,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     //On Start Values
     private void Start()
     {
+        invincible = false;
         moveSpeed = regularSpeed;
         hitbox.SetActive(false);
         gunTier = 1;
@@ -68,8 +70,11 @@ public class PlayerControl : MonoBehaviour
         //Calculates Focus mode on shift press
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            Vector2 current = fei.transform.position;
+            Vector2 target = transform.position;
             moveSpeed = focusSpeed;
             hitbox.SetActive(true);
+            fei.transform.position = Vector2.MoveTowards(current, target, 0.1f);
         }
         else
         {
@@ -106,20 +111,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag != "PlayerBullet")
-        {
-            Death();
-        }   
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Death();
-    }
-
-    private void Death()
+    public void Death()
     {
         if (lives <= 0)
         {
@@ -127,6 +119,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if (invincible == false)
         {
+            transform.position = new Vector2(0, -7);
             //Trigger Animation
             playerLives[lives - 1].SetActive(false);
             lives--;
@@ -141,7 +134,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if (invincible == true)
         {
-            for (float i = 0; i <= 5; i += Time.deltaTime)
+            for (float i = 0; i <= 4; i += Time.deltaTime)
             {
                 invincible = true;
             }

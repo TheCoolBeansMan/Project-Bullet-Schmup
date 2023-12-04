@@ -12,6 +12,8 @@ TagManager:
   - RedBullet
   - BlueBullet
   - BlackBullet
+  - GrazeZone
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
