@@ -114,6 +114,11 @@ public class PlayerControl : MonoBehaviour
         }   
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Death();
+    }
+
     private void Death()
     {
         if (lives <= 0)
