@@ -30,7 +30,7 @@ public class EnemyBulletSpawner : MonoBehaviour
         if (spawnerType == SpawnerType.Spin)
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
 
-        InvokeBullets();
+        StartCoroutine(InvokeBullets());
         bulletsShot = 0; 
     }
 
