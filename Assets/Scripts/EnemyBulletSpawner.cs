@@ -21,7 +21,7 @@ public class EnemyBulletSpawner : MonoBehaviour
 
     private GameObject spawnedBullet;
     private float timer = 0f;
-    private float cooldown;
+    private float cooldown = 0f;
 
 
     private void Update()
