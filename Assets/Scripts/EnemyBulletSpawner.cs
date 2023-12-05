@@ -21,7 +21,6 @@ public class EnemyBulletSpawner : MonoBehaviour
 
     private GameObject spawnedBullet;
     private float timer = 0f;
-    private int bulletsShot = 0;
 
 
     private void Update()
@@ -31,19 +30,21 @@ public class EnemyBulletSpawner : MonoBehaviour
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
 
         StartCoroutine(InvokeBullets());
-        bulletsShot = 0; 
     }
 
     IEnumerator InvokeBullets()
     {
         WaitForSeconds secondDelay = new WaitForSeconds(waitSeconds);
-        if (timer >= firingRate && bulletsShot <= bulletCount)
+
+        if (timer >= firingRate)
         {
-            Invoke("Shoot", bulletDelay);
-            timer = 0;
-            bulletsShot++;
+            for (int i = 0; i <= bulletCount; i++)
+            {
+                Invoke("Shoot", bulletDelay);
+                timer = 0;
+            }
+            yield return secondDelay;
         }
-        yield return secondDelay;
     }
 
     private void Shoot()
