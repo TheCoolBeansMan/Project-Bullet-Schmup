@@ -37,15 +37,15 @@ public class EnemyBulletSpawner : MonoBehaviour
 
         if (cooldown <= 0)
         {
+            cooldown = waitTime;
             if (timer >= firingRate)
             {
                 for (int i = 0; i <= bulletCount; i++)
                 {
                     Invoke("Shoot", bulletDelay);
-                    timer = 0;
                 }
+                timer = 0;
             }
-            cooldown = waitTime;
         }
 
     }
