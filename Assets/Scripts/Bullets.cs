@@ -16,6 +16,7 @@ public class Bullets : MonoBehaviour
     private Vector2 spawnPoint;
     private float timer = 0f;
     private GameObject player;
+    private Vector2 lastKnownPlayerPosition;
     private float playerX;
     private float playerY;
 

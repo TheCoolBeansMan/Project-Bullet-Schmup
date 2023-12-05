@@ -9,6 +9,12 @@ public class PlayerControl : MonoBehaviour
     public float focusSpeed;
     public Rigidbody2D playerRB;
     public GameObject hitbox;
+    private GameObject player;
+    private Vector2 lastKnownPlayerPosition;
+    private float playerX;
+    private float playerY;
+    private Vector2 spawnPoint;
+
 
     [Header("Player Shooting")]
     public Transform[] bulletSpawnPointList;
@@ -33,6 +39,10 @@ public class PlayerControl : MonoBehaviour
     //On Start Values
     private void Start()
     {
+        spawnPoint = new Vector2(transform.position.x, transform.position.y);
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerX = player.transform.position.x;
+        playerY = player.transform.position.y;
         invincible = false;
         moveSpeed = regularSpeed;
         hitbox.SetActive(false);
@@ -45,7 +55,8 @@ public class PlayerControl : MonoBehaviour
         playerBombs[0].SetActive(true);
         playerBombs[1].SetActive(true);
         playerPower[0].SetActive(true);
-}
+    }
+
     //Update Once per Frame, Use for Proccessing Inputs
     private void Update()
     {
@@ -109,6 +120,11 @@ public class PlayerControl : MonoBehaviour
             playerBombs[bombs - 1].SetActive(false);
             bombs--;
         }
+    }
+
+    public void SetLastKnownPlayerPosition(Vector2 position)
+    {
+        lastKnownPlayerPosition = player.transform.position;
     }
 
     public void Death()
