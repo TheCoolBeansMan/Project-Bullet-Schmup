@@ -12,6 +12,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     public float bulletSpeed;
     public float bulletDelay;
     public float bulletCount;
+    public bool bulletStop;
 
     [Header("Spawner Stats")]
     [SerializeField] private SpawnerType spawnerType;
