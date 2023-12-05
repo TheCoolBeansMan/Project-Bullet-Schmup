@@ -11,7 +11,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     public float bulletLife;
     public float bulletSpeed;
     public float bulletDelay;
-    public float bulletCount;
+    public int bulletCount;
     public bool bulletStop;
 
     [Header("Spawner Stats")]
@@ -20,6 +20,7 @@ public class EnemyBulletSpawner : MonoBehaviour
 
     private GameObject spawnedBullet;
     private float timer = 0f;
+    private int bulletsShot = 0;
 
 
     private void Update()
@@ -28,18 +29,13 @@ public class EnemyBulletSpawner : MonoBehaviour
         if (spawnerType == SpawnerType.Spin)
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
 
-        if (timer >= firingRate)
+        if (timer >= firingRate && bulletsShot <= bulletCount)
         {
-            for (int j = 0; j <= bulletCount; j++)
-            {
-                Invoke("Shoot", bulletDelay);
-                //timer = 0;
-            }
-
-            //Shoot();
+            Invoke("Shoot", bulletDelay);
             timer = 0;
-
+            bulletsShot++;
         }
+        bulletsShot = 0; 
     }
 
     private void Shoot()
