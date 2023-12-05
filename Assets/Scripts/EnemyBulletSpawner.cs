@@ -44,9 +44,8 @@ public class EnemyBulletSpawner : MonoBehaviour
                     Invoke("Shoot", bulletDelay);
                     timer = 0;
                 }
-                cooldown = waitTime;
             }
-                
+            cooldown = waitTime;
         }
 
     }
