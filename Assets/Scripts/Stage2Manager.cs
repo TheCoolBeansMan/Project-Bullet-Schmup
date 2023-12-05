@@ -90,7 +90,7 @@ public class Stage2Manager : MonoBehaviour
             FormationG();
         }
 
-        if (timeActive && timer >= 30f)
+        if (timeActive && timer >= 28f)
         {
             enemyG.SetActive(false);
         }
