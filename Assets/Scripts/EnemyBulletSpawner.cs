@@ -13,7 +13,6 @@ public class EnemyBulletSpawner : MonoBehaviour
     public float bulletDelay;
     public float bulletCount;
     public bool bulletStop;
-    public float delayTime;
 
     [Header("Spawner Stats")]
     [SerializeField] private SpawnerType spawnerType;
@@ -31,17 +30,15 @@ public class EnemyBulletSpawner : MonoBehaviour
 
         if (timer >= firingRate)
         {
-            for (float i = 0; i <= delayTime; i += Time.deltaTime)
+            for (int j = 0; j <= bulletCount; j++)
             {
-                for (int j = 0; j <= bulletCount; j++)
-                {
-                    Invoke("Shoot", bulletDelay);
-                    timer = 0;
-                }
-
-                //Shoot();
+                Invoke("Shoot", bulletDelay);
                 //timer = 0;
             }
+
+            //Shoot();
+            timer = 0;
+
         }
     }
 
