@@ -42,8 +42,8 @@ public class EnemyBulletSpawner : MonoBehaviour
                 //Shoot();
                 //timer = 0;
             }
+            delayTimer = 0;
         }
-        delayTimer = 0;
     }
 
     private void Shoot()
