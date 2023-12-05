@@ -13,7 +13,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     public float bulletDelay;
     public int bulletCount;
     public bool bulletStop;
-    public float waitSeconds;
+    public float waitTime;
 
     [Header("Spawner Stats")]
     [SerializeField] private SpawnerType spawnerType;
@@ -21,6 +21,7 @@ public class EnemyBulletSpawner : MonoBehaviour
 
     private GameObject spawnedBullet;
     private float timer = 0f;
+    private float cooldown;
 
 
     private void Update()
@@ -29,21 +30,19 @@ public class EnemyBulletSpawner : MonoBehaviour
         if (spawnerType == SpawnerType.Spin)
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
 
-        StartCoroutine(InvokeBullets());
-    }
-
-    IEnumerator InvokeBullets()
-    {
-        WaitForSeconds secondDelay = new WaitForSeconds(waitSeconds);
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
 
         if (timer >= firingRate)
         {
-            for (int i = 0; i <= bulletCount; i++)
+            if (cooldown <= 0)
             {
+                cooldown = waitTime;
                 Invoke("Shoot", bulletDelay);
                 timer = 0;
             }
-            yield return secondDelay;
         }
     }
 
