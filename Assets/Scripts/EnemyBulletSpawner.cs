@@ -13,7 +13,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     public float bulletDelay;
     public int bulletCount;
     public bool bulletStop;
-    public int waitSeconds;
+    public float waitSeconds;
 
     [Header("Spawner Stats")]
     [SerializeField] private SpawnerType spawnerType;
