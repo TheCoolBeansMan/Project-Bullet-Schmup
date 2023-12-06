@@ -14,6 +14,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     public int bulletCount;
     public bool bulletStop;
     public float waitTime;
+    public GameObject Player;
 
     [Header("Spawner Stats")]
     [SerializeField] private SpawnerType spawnerType;
@@ -22,11 +23,16 @@ public class EnemyBulletSpawner : MonoBehaviour
     private GameObject spawnedBullet;
     private float timer = 0f;
     private float cooldown = 0f;
+    private float zPos;
 
 
     private void Update()
     {
         timer += Time.deltaTime;
+        //transform.LookAt(Player.transform.position);
+        //zPos = transform.eulerAngles.z;
+        //transform.eulerAngles = Vector3.forward * zPos;
+
         if (spawnerType == SpawnerType.Spin)
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
 
