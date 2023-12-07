@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBulletSpawner : MonoBehaviour
 {
-    enum SpawnerType { Straight, Spin }
+    enum SpawnerType { Straight, Spin, Antispin }
 
     [Header("Bullet Stats")]
     public GameObject bullet;
@@ -14,7 +14,9 @@ public class EnemyBulletSpawner : MonoBehaviour
     public int bulletCount;
     public bool bulletStop;
     public float waitTime;
-    public GameObject Player;
+    public GameObject playerTarget;
+    public bool isAimed = false;
+    public float shotAngle;
 
     [Header("Spawner Stats")]
     [SerializeField] private SpawnerType spawnerType;
@@ -23,18 +25,24 @@ public class EnemyBulletSpawner : MonoBehaviour
     private GameObject spawnedBullet;
     private float timer = 0f;
     private float cooldown = 0f;
-    private float zPos;
+    
 
 
     private void Update()
     {
         timer += Time.deltaTime;
-        //transform.LookAt(Player.transform.position);
-        //zPos = transform.eulerAngles.z;
-        //transform.eulerAngles = Vector3.forward * zPos;
-
+        if (isAimed)
+        {
+            Vector3 Look = transform.InverseTransformPoint(playerTarget.transform.position);
+            float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg - shotAngle;
+            transform.Rotate(0, 0, Angle);
+        }
+        
         if (spawnerType == SpawnerType.Spin)
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
+
+        else if (spawnerType == SpawnerType.Antispin)
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - 1f);
 
         if (cooldown > 0)
         {
