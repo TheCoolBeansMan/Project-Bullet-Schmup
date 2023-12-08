@@ -19,7 +19,12 @@ public class Stage1Manager : MonoBehaviour
 
     public GameObject enemyD;
 
-    public GameObject boss;
+    public GameObject boss1;
+    public GameObject boss2;
+    public GameObject boss3;
+    public GameObject bossEnemy;
+    public GameObject bossEnemy2;
+    public GameObject bossEnemy3;
 
     public Destructable currentHP;
 
@@ -42,7 +47,9 @@ public class Stage1Manager : MonoBehaviour
         enemyC3.SetActive(false);
         midboss.SetActive(false);
         enemyD.SetActive(false);
-        boss.SetActive(false);
+        boss1.SetActive(false);
+        boss2.SetActive(false);
+        boss3.SetActive(false);
 
         //Invoke("FormationA", 2f);
         //Invoke("FormationB", 10f);
@@ -55,37 +62,46 @@ public class Stage1Manager : MonoBehaviour
 
     void Update()
     {
-        if (timeActive)
-        {
-            timer += Time.deltaTime;
-        }
+        //if (timeActive)
+        //{
+        //    timer += Time.deltaTime;
+        //}
 
-        if (timeActive && timer >= 2f)
-        {
-            FormationA();
-        }
+        //if (timeActive && timer >= 2f)
+        //{
+        //    FormationA();
+        //}
 
-        if (timeActive && timer >= 10f)
-        {
-            FormationB();
-            FormationC();
-        }
+        //if (timeActive && timer >= 10f)
+        //{
+        //    FormationB();
+        //    FormationC();
+        //}
 
-        if (timeActive && timer >= 23f)
-        {
-            Midboss();
-        }
+        //if (timeActive && timer >= 23f)
+        //{
+        //    Midboss();
+        //}
 
-        if (midbossEnemy == null) //Needs to be changed so that this triggers upon boss defeat
-        {
-            FormationD();
-            Debug.Log("Trigger Next Formation");
-        }
+        //if (midbossEnemy == null && timer >= 30f) //Needs to be changed so that this triggers upon boss defeat
+        //{
+        //    FormationD();
+        //}
 
-        if (timeActive && timer >= 60f)
-        {
-            Boss();
-        }
+        //if (enemyD == null && timer > 58f)
+        //{
+        //    Boss();
+        //}
+
+        //if (!timeActive && boss1 == null)
+        //{
+        //    Boss2();
+        //}
+
+        //if (!timeActive && boss2 == null)
+        //{
+        //    Boss3();
+        //}
 
         int currentSecond = Mathf.FloorToInt(timer);
         if (currentSecond != lastSecondLogged)
@@ -141,6 +157,7 @@ public class Stage1Manager : MonoBehaviour
 
             if(GameObject.FindGameObjectsWithTag("midboss") == null)
             {
+                timeActive = true;
                 midbossDead = true;
                 midboss.SetActive(false);
             }
@@ -148,6 +165,7 @@ public class Stage1Manager : MonoBehaviour
         else
             Debug.Log("Debug Warning: midboss not assigned.");
     }
+
 
     void FormationD()
     {
@@ -161,10 +179,37 @@ public class Stage1Manager : MonoBehaviour
 
     void Boss()
     {
-        if (boss != null)
+        if (boss1 != null)
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss.SetActive(true);
+            boss1.SetActive(true);
+            bossEnemy.SetActive(true);
+            timeActive = false;
+        }
+        else
+            Debug.Log("Debug Warning: boss not assigned.");
+    }
+
+    void Boss2()
+    {
+        if (boss2 != null)
+        {
+            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+            boss2.SetActive(true);
+            bossEnemy2.SetActive(true);
+            timeActive = false;
+        }
+        else
+            Debug.Log("Debug Warning: boss not assigned.");
+    }
+
+    void Boss3()
+    {
+        if (boss2 != null)
+        {
+            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+            boss3.SetActive(true);
+            bossEnemy3.SetActive(true);
             timeActive = false;
         }
         else

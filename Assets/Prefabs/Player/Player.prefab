@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46849660be0c8fd43ac6a4d8291951f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regularSpeed: 9.5
+  regularSpeed: 11
   focusSpeed: 5.5
   playerRB: {fileID: 1581283477239932767}
   hitbox: {fileID: 7140630406229147487}

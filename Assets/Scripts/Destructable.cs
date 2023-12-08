@@ -8,14 +8,23 @@ public class Destructable : MonoBehaviour
     public string target;
     public float maxHitpoints;
     public float hitpoints;
-
-    //public Stage1Manager stage1;
+    public int bossLives;
+    public GameObject[] attackPattern;
+    public int bossPhase;
+    public bool bossActive;
 
     private void Start()
     {
         hitpoints = maxHitpoints;
+        //attackPattern[0].SetActive(true);
     }
-
+    private void Update()
+    {
+        if(bossActive)
+        {
+            Invoke("BossAttack", 1f);
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Bullets bullet = collision.GetComponent<Bullets>();
@@ -26,23 +35,44 @@ public class Destructable : MonoBehaviour
             hitpoints -= damage;
             Destroy(bullet.gameObject);
 
-            if (hitpoints <= 0)
+            if (this.gameObject.CompareTag("boss") || this.gameObject.CompareTag("midboss"))
+            {
+                BossHealth();
+            }
+
+            else if (this.gameObject.CompareTag("Enemy") && hitpoints <= 0)
             {
                 Destroy(gameObject);
-                //CheckBoss();
             }
 
 
         }
     }
 
-    /***void CheckBoss()
+    public void BossHealth()
     {
-        stage1 = GetComponent<Stage1Manager>();
-        GameObject midbossParent = GameObject.Find("MIDBOSS");
-        if (GameObject.FindGameObjectWithTag("midboss") != midbossParent)
+
+        if (hitpoints <= 0)
         {
-            midbossParent.SetActive(false);
+            hitpoints = maxHitpoints;
+            bossLives--;
+            bossPhase++;
         }
-    }***/
+
+        if (bossLives <= 0)
+        {
+            Destroy(gameObject);
+            bossActive = false;
+        }
+    }
+
+    //public void BossAttack()
+    //{
+    //    for (bossPhase = 0; bossPhase <= attackPattern.Length; bossPhase++)
+    //    {
+    //        attackPattern[bossPhase].SetActive(true);
+    //        attackPattern[bossPhase - 1].SetActive(false);
+    //    }
+    //}
+
 }
