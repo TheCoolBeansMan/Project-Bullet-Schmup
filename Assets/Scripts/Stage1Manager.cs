@@ -62,10 +62,10 @@ public class Stage1Manager : MonoBehaviour
 
     void Update()
     {
-        //if (timeActive)
-        //{
-        //    timer += Time.deltaTime;
-        //}
+        if (timeActive)
+        {
+            timer += Time.deltaTime;
+        }
 
         //if (timeActive && timer >= 2f)
         //{
@@ -88,20 +88,20 @@ public class Stage1Manager : MonoBehaviour
         //    FormationD();
         //}
 
-        //if (enemyD == null && timer > 58f)
+        //if (enemyD == null || timer > 58f)
         //{
         //    Boss();
         //}
 
-        //if (!timeActive && boss1 == null)
-        //{
-        //    Boss2();
-        //}
+        if (bossEnemy.GetComponent<Destructable>().hitpoints <= 1f)
+        {
+            Boss2();
+        }
 
-        //if (!timeActive && boss2 == null)
-        //{
-        //    Boss3();
-        //}
+        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 1f)
+        {
+            Boss3();
+        }
 
         int currentSecond = Mathf.FloorToInt(timer);
         if (currentSecond != lastSecondLogged)
@@ -195,6 +195,7 @@ public class Stage1Manager : MonoBehaviour
         if (boss2 != null)
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+            boss1.SetActive(false);
             boss2.SetActive(true);
             bossEnemy2.SetActive(true);
             timeActive = false;
