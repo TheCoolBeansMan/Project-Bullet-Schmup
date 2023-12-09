@@ -166,10 +166,10 @@ public class Stage2Manager : MonoBehaviour
             Boss2();
         }
 
-        //if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 10f)
-        //{
-        //    Boss3();
-        //}
+        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 10f)
+        {
+            Boss3();
+        }
 
         if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
         {
