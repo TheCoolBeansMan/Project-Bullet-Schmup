@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Stage1Manager : MonoBehaviour
 {
+    public GameObject dialogueManager;
+
     public GameObject enemyA1;
     public GameObject enemyA2; 
 
@@ -88,7 +90,16 @@ public class Stage1Manager : MonoBehaviour
             FormationD();
         }
         
-        if (enemyD == null || timer > 58f)
+        if (enemyD == null || timer > 60f)
+        {
+            timeActive = false;
+            bossEnemy.SetActive(true);
+            dialogueManager.GetComponent<Dialogue>().BeginDialogue();
+            if (dialogueManager.GetComponent<Dialogue>().isOver == true)
+                timeActive = true;
+        }
+
+        if (timer > 65f)
         {
             Boss();
         }

@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour
 
     public Renderer rend;
     public GameObject scoreTracker;
+    public bool shootingEnabled;
 
     private Vector2 moveDirection;
     private float moveSpeed;
@@ -47,6 +48,7 @@ public class PlayerControl : MonoBehaviour
     //On Start Values
     private void Start()
     {
+        shootingEnabled = true;
         spawnPoint = new Vector2(transform.position.x, transform.position.y);
         player = GameObject.FindGameObjectWithTag("Player");
         playerX = player.transform.position.x;
@@ -135,40 +137,43 @@ public class PlayerControl : MonoBehaviour
     //Manages Shooting and Bombs
     private void Shooting()
     {
-        if (Input.GetKey(KeyCode.Z) && Time.time > nextFire)
+        if (shootingEnabled == true)
         {
-            for (int i = 0; i < gunTier; i++)
+            if (Input.GetKey(KeyCode.Z) && Time.time > nextFire)
             {
-              Transform bulletSpawnPoint = bulletSpawnPointList[i];
-                nextFire = Time.time + fireRate;
-                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+                for (int i = 0; i < gunTier; i++)
+                {
+                    Transform bulletSpawnPoint = bulletSpawnPointList[i];
+                    nextFire = Time.time + fireRate;
+                    var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                    //bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletSpeed;
+                }
             }
-        }
-        //Shoot Bombs
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (bombs > 0)
+            //Shoot Bombs
+            if (Input.GetKeyDown(KeyCode.X))
             {
-                scoreTracker.GetComponent<MeterManager>().score += 001000;
-                //Trigger Animation
-                bulletsOnScreen = GameObject.FindGameObjectsWithTag("RedBullet");
-                for (int i = 0; i < bulletsOnScreen.Length; i++)
+                if (bombs > 0)
                 {
-                    Destroy(bulletsOnScreen[i]);
+                    scoreTracker.GetComponent<MeterManager>().score += 001000;
+                    //Trigger Animation
+                    bulletsOnScreen = GameObject.FindGameObjectsWithTag("RedBullet");
+                    for (int i = 0; i < bulletsOnScreen.Length; i++)
+                    {
+                        Destroy(bulletsOnScreen[i]);
+                    }
+                    bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlueBullet");
+                    for (int i = 0; i < bulletsOnScreen.Length; i++)
+                    {
+                        Destroy(bulletsOnScreen[i]);
+                    }
+                    bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlackBullet");
+                    for (int i = 0; i < bulletsOnScreen.Length; i++)
+                    {
+                        Destroy(bulletsOnScreen[i]);
+                    }
+                    playerBombs[bombs - 1].SetActive(false);
+                    bombs--;
                 }
-                bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlueBullet");
-                for (int i = 0; i < bulletsOnScreen.Length; i++)
-                {
-                    Destroy(bulletsOnScreen[i]);
-                }
-                bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlackBullet");
-                for (int i = 0; i < bulletsOnScreen.Length; i++)
-                {
-                    Destroy(bulletsOnScreen[i]);
-                }
-                playerBombs[bombs - 1].SetActive(false);
-                bombs--;
             }
         }
     }
