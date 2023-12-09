@@ -67,38 +67,38 @@ public class Stage1Manager : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        //if (timeActive && timer >= 2f)
-        //{
-        //    FormationA();
-        //}
+        if (timeActive && timer >= 2f)
+        {
+            FormationA();
+        }
 
-        //if (timeActive && timer >= 10f)
-        //{
-        //    FormationB();
-        //    FormationC();
-        //}
+        if (timeActive && timer >= 10f)
+        {
+            FormationB();
+            FormationC();
+        }
 
-        //if (timeActive && timer >= 23f)
-        //{
-        //    Midboss();
-        //}
+        if (timeActive && timer >= 23f)
+        {
+            Midboss();
+        }
 
-        //if (midbossEnemy == null && timer >= 30f) //Needs to be changed so that this triggers upon boss defeat
-        //{
-        //    FormationD();
-        //}
+        if (midbossEnemy == null && timer >= 30f) //Needs to be changed so that this triggers upon boss defeat
+        {
+            FormationD();
+        }
 
-        //if (enemyD == null || timer > 58f)
-        //{
-        //    Boss();
-        //}
+        if (enemyD == null || timer > 58f)
+        {
+            Boss();
+        }
 
-        if (bossEnemy.GetComponent<Destructable>().hitpoints <= 1f)
+        if (bossEnemy.GetComponent<Destructable>().hitpoints <= 5f)
         {
             Boss2();
         }
 
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 1f)
+        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
         {
             Boss3();
         }
