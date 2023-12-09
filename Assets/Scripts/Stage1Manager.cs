@@ -92,10 +92,10 @@ public class Stage1Manager : MonoBehaviour
         
         if (enemyD == null || timer > 60f)
         {
-            timeActive = false;
             bossEnemy.SetActive(true);
-            dialogueManager.GetComponent<Dialogue>().BeginDialogue();
-            if (dialogueManager.GetComponent<Dialogue>().isOver == true)
+            timeActive = false;
+            dialogueManager.GetComponent<Dialogue>().activated = true;
+            if (dialogueManager.GetComponent<Dialogue>().activated == false)
                 timeActive = true;
         }
 
@@ -194,7 +194,7 @@ public class Stage1Manager : MonoBehaviour
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
             boss1.SetActive(true);
-            bossEnemy.SetActive(true);
+            //bossEnemy.SetActive(true);
             timeActive = false;
         }
         else

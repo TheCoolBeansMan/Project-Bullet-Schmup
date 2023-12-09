@@ -17,32 +17,26 @@ public class Dialogue : MonoBehaviour
     public string[] words;
     public Sprite[] portrait;
 
-    public bool isOver;
+    public bool activated = false;
 
-    private int step = 1;
+    private int step = 0;
 
-    private void Start()
+    private void Update()
     {
-        speakerText.text = speaker[0];
-        dialogueText.text = words[0];
-        portraitImage.sprite = portrait[0];
-    }
-
-    public void BeginDialogue()
-    {
-        isOver = false;
-        player.GetComponent<PlayerControl>().shootingEnabled = false;
-        textbox.SetActive(true);
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && activated == true)
         {
+            player.GetComponent<PlayerControl>().shootingEnabled = false;
+            textbox.SetActive(true);
             speakerText.text = speaker[step];
             dialogueText.text = words[step];
             portraitImage.sprite = portrait[step];
             step++;
             if (step >= speaker.Length)
-                isOver = true;
+            {
+                textbox.SetActive(false);
+                player.GetComponent<PlayerControl>().shootingEnabled = true;
+                activated = false;
+            }
         }
-        player.GetComponent<PlayerControl>().shootingEnabled = true;
-        textbox.SetActive(false);
     }
 }
