@@ -10,12 +10,16 @@ public class Death : MonoBehaviour
     {
         if (collision.tag != "target")
         {
-            player.GetComponent<PlayerControl>().Death();   
+            player.GetComponent<PlayerControl>().StartCoroutine("GetInvulnerable");
+            player.GetComponent<PlayerControl>().Death();
+            
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        player.GetComponent<PlayerControl>().StartCoroutine("GetInvulnerable");
         player.GetComponent<PlayerControl>().Death();
+        
     }
 }

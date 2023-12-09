@@ -12,6 +12,7 @@ public class Destructable : MonoBehaviour
     public GameObject[] attackPattern;
     public int bossPhase;
     public bool bossActive;
+    public GameObject scoreTracker;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class Destructable : MonoBehaviour
 
             else if (this.gameObject.CompareTag("Enemy") && hitpoints <= 0)
             {
+                scoreTracker.GetComponent<MeterManager>().score += 000100;
                 Destroy(gameObject);
             }
 
@@ -57,12 +59,14 @@ public class Destructable : MonoBehaviour
             hitpoints = maxHitpoints;
             bossLives--;
             bossPhase++;
+            scoreTracker.GetComponent<MeterManager>().score += 002500;
         }
 
         if (bossLives <= 0)
         {
             Destroy(gameObject);
             bossActive = false;
+            scoreTracker.GetComponent<MeterManager>().score += 005000;
         }
     }
 

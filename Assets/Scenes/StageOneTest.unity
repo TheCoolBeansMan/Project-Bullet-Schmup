@@ -2514,6 +2514,8 @@ MonoBehaviour:
   healthSlider: {fileID: 2112935995}
   bombSlider: {fileID: 1616231944}
   powerSlider: {fileID: 654089304}
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
   glow: {fileID: 1970152492}
   healthGraze: 10
   bombGraze: 15
@@ -2522,6 +2524,8 @@ MonoBehaviour:
   bombDecrease: 5
   powerDecrease: 5
   player: {fileID: 2137775459}
+  score: 0
+  highScore: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4634,7 +4638,12 @@ MonoBehaviour:
   midboss: {fileID: 1053935788}
   midbossEnemy: {fileID: 24125570}
   enemyD: {fileID: 175991860846430566}
-  boss: {fileID: 7652447503613804052}
+  boss1: {fileID: 0}
+  boss2: {fileID: 0}
+  boss3: {fileID: 0}
+  bossEnemy: {fileID: 0}
+  bossEnemy2: {fileID: 0}
+  bossEnemy3: {fileID: 0}
   currentHP: {fileID: 0}
   timeActive: 0
 --- !u!1 &1051564312
@@ -9265,6 +9274,10 @@ MonoBehaviour:
   - {fileID: 1922135725}
   - {fileID: 1442641957}
   - {fileID: 1538887677}
+  grazeZone: {fileID: 484361972}
+  deathZone: {fileID: 0}
+  rend: {fileID: 0}
+  scoreTracker: {fileID: 484361969}
 --- !u!50 &2137775461
 Rigidbody2D:
   serializedVersion: 4
@@ -12950,11 +12963,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5312883274063774308, guid: 15ae2c4080d42084da936289902564c5, type: 3}
   m_PrefabInstance: {fileID: 705128884026784498}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7652447503613804052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3041474217134567391, guid: af3016e38935c6741b5d29d2766f906c, type: 3}
-  m_PrefabInstance: {fileID: 8929530966769659879}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7841521116181372169 stripped
 Transform:

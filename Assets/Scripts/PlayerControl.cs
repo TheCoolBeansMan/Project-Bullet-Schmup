@@ -30,11 +30,18 @@ public class PlayerControl : MonoBehaviour
     public GameObject[] playerLives;
     public GameObject[] playerBombs;
     public GameObject[] playerPower;
+    public Collider2D grazeZone;
+    public Collider2D deathZone;
+
+    public Renderer rend;
+    public GameObject scoreTracker;
 
     private Vector2 moveDirection;
     private float moveSpeed;
     private float nextFire;
-    private bool invincible;
+    private Color c;
+    private GameObject[] bulletsOnScreen;
+    private bool hitOnce;
 
     //On Start Values
     private void Start()
@@ -43,7 +50,6 @@ public class PlayerControl : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerX = player.transform.position.x;
         playerY = player.transform.position.y;
-        invincible = false;
         moveSpeed = regularSpeed;
         hitbox.SetActive(false);
         gunTier = 1;
@@ -55,6 +61,7 @@ public class PlayerControl : MonoBehaviour
         playerBombs[0].SetActive(true);
         playerBombs[1].SetActive(true);
         playerPower[0].SetActive(true);
+        c = rend.material.color;
     }
 
     //Update Once per Frame, Use for Proccessing Inputs
@@ -98,6 +105,23 @@ public class PlayerControl : MonoBehaviour
     {
         //Moves Player
         playerRB.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+
+        if (transform.position.x <= -17)
+        {
+            transform.position = new Vector2(0, 0);
+        }
+        if (transform.position.x >= 2.5)
+        {
+
+        }
+        if (transform.position.y <= -8)
+        {
+
+        }
+        if (transform.position.y >= 8.5)
+        {
+
+        }
     }
 
     //Manages Shooting and Bombs
@@ -116,9 +140,28 @@ public class PlayerControl : MonoBehaviour
         //Shoot Bombs
         if (Input.GetKeyDown(KeyCode.X))
         {
-            //Trigger Bomb
-            playerBombs[bombs - 1].SetActive(false);
-            bombs--;
+            if (bombs > 0)
+            {
+                scoreTracker.GetComponent<MeterManager>().score += 001000;
+                //Trigger Animation
+                bulletsOnScreen = GameObject.FindGameObjectsWithTag("RedBullet");
+                for (int i = 0; i < bulletsOnScreen.Length; i++)
+                {
+                    Destroy(bulletsOnScreen[i]);
+                }
+                bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlueBullet");
+                for (int i = 0; i < bulletsOnScreen.Length; i++)
+                {
+                    Destroy(bulletsOnScreen[i]);
+                }
+                bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlackBullet");
+                for (int i = 0; i < bulletsOnScreen.Length; i++)
+                {
+                    Destroy(bulletsOnScreen[i]);
+                }
+                playerBombs[bombs - 1].SetActive(false);
+                bombs--;
+            }
         }
     }
 
@@ -129,32 +172,40 @@ public class PlayerControl : MonoBehaviour
 
     public void Death()
     {
-        if (lives <= 0)
+        if (hitOnce == false)
         {
-            Destroy(gameObject);
-        }
-        else if (invincible == false)
-        {
+            if (lives <= 0)
+            {
+                Destroy(gameObject);
+            }
+
             transform.position = new Vector2(0, -7);
-            //Trigger Animation
+
             playerLives[lives - 1].SetActive(false);
             lives--;
             playerPower[gunTier - 1].SetActive(false);
             gunTier--;
+            hitOnce = true;
+
             if (gunTier <= 0)
             {
                 gunTier = 1;
                 playerPower[0].SetActive(true);
             }
-            invincible = true;
         }
-        else if (invincible == true)
-        {
-            for (float i = 0; i <= 4; i += Time.deltaTime)
-            {
-                invincible = true;
-            }
-            invincible = false;
-        }
+    }
+
+    IEnumerator GetInvulnerable()
+    {
+        grazeZone.enabled = false;
+        deathZone.enabled = false;
+        c.a = 0.5f;
+        rend.material.color = c;
+        yield return new WaitForSeconds(3);
+        grazeZone.enabled = true;
+        deathZone.enabled = true;
+        c.a = 1f;
+        rend.material.color = c;
+        hitOnce = false;
     }
 }
