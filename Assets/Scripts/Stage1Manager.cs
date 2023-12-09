@@ -87,7 +87,7 @@ public class Stage1Manager : MonoBehaviour
         {
             FormationD();
         }
-
+        
         if (enemyD == null || timer > 58f)
         {
             Boss();
@@ -189,7 +189,6 @@ public class Stage1Manager : MonoBehaviour
         else
             Debug.Log("Debug Warning: boss not assigned.");
     }
-
     void Boss2()
     {
         if (boss2 != null)

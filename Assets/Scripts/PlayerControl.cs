@@ -42,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     private Color c;
     private GameObject[] bulletsOnScreen;
     private bool hitOnce;
+    private Vector2 pos;
 
     //On Start Values
     private void Start()
@@ -105,22 +106,29 @@ public class PlayerControl : MonoBehaviour
     {
         //Moves Player
         playerRB.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-
-        if (transform.position.x <= -17)
+        if (transform.position.y <= -9)
         {
-            transform.position = new Vector2(0, 0);
+            pos.x = transform.position.x;
+            pos.y = -9f;
+            transform.position = pos;
         }
-        if (transform.position.x >= 2.5)
+        if (transform.position.y >= 9f)
         {
-
+            pos.x = transform.position.x;
+            pos.y = 9f;
+            transform.position = pos;
         }
-        if (transform.position.y <= -8)
+        if (transform.position.x <= -10.5f)
         {
-
+            pos.x = -10.5f;
+            pos.y = transform.position.y;
+            transform.position = pos;
         }
-        if (transform.position.y >= 8.5)
+        if (transform.position.x >= 10f)
         {
-
+            pos.x = 10f;
+            pos.y = transform.position.y;
+            transform.position = pos;
         }
     }
 
