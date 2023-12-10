@@ -14,6 +14,7 @@ public class Destructable : MonoBehaviour
     public bool bossActive;
     public GameObject scoreTracker;
 
+
     private void Start()
     {
         hitpoints = maxHitpoints;
