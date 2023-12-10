@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class Stage1Manager : MonoBehaviour
 {
-    public GameObject dialogueManager;
+    public GameObject dialogueManagerA;
+    public GameObject dialogueManagerB;
+    public bool dialogueOver;
+
+    public GameObject player;
 
     public GameObject enemyA1;
     public GameObject enemyA2; 
@@ -38,6 +42,7 @@ public class Stage1Manager : MonoBehaviour
 
     void Start()
     {
+        dialogueOver = false;
         timeActive= true;
 
         enemyA1.SetActive(false);
@@ -89,17 +94,8 @@ public class Stage1Manager : MonoBehaviour
         {
             FormationD();
         }
-        
-        if (enemyD == null || timer > 60f)
-        {
-            bossEnemy.SetActive(true);
-            timeActive = false;
-            dialogueManager.GetComponent<Dialogue>().activated = true;
-            if (dialogueManager.GetComponent<Dialogue>().activated == false)
-                timeActive = true;
-        }
 
-        if (timer > 65f)
+        if (enemyD == null || timer > 58f)
         {
             Boss();
         }
@@ -112,6 +108,11 @@ public class Stage1Manager : MonoBehaviour
         if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
         {
             Boss3();
+        }
+
+        if (bossEnemy3.GetComponent<Destructable>().hitpoints <= 5f)
+        {
+            End();
         }
 
         int currentSecond = Mathf.FloorToInt(timer);
@@ -190,15 +191,25 @@ public class Stage1Manager : MonoBehaviour
 
     void Boss()
     {
-        if (boss1 != null)
+        if (dialogueOver == false)
         {
-            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss1.SetActive(true);
-            //bossEnemy.SetActive(true);
-            timeActive = false;
+            player.GetComponent<PlayerControl>().shootingEnabled = false;
+            dialogueManagerA.GetComponent<Dialogue>().textbox.SetActive(true);
+            dialogueManagerA.GetComponent<Dialogue>().activated = true;
         }
         else
-            Debug.Log("Debug Warning: boss not assigned.");
+        {
+            player.GetComponent<PlayerControl>().shootingEnabled = true;
+            if (boss1 != null)
+            {
+                //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+                boss1.SetActive(true);
+                bossEnemy.SetActive(true);
+                timeActive = false;
+            }
+            else
+                Debug.Log("Debug Warning: boss not assigned.");
+        }
     }
     void Boss2()
     {
@@ -225,5 +236,12 @@ public class Stage1Manager : MonoBehaviour
         }
         else
             Debug.Log("Debug Warning: boss not assigned.");
+    }
+
+    void End()
+    {
+        player.GetComponent<PlayerControl>().shootingEnabled = false;
+        dialogueManagerB.GetComponent<Dialogue>().textbox.SetActive(true);
+        dialogueManagerB.GetComponent<Dialogue>().activated = true;
     }
 }
