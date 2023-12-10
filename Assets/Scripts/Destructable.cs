@@ -14,10 +14,21 @@ public class Destructable : MonoBehaviour
     public bool bossActive;
     public GameObject scoreTracker;
 
+    //public Sprite destroyedSprite;
+    //private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer destroyedSpriteRenderer;
 
     private void Start()
     {
         hitpoints = maxHitpoints;
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        //destroyedSpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+        //destroyedSpriteRenderer.sprite = destroyedSprite;
+        //destroyedSpriteRenderer.enabled = false;
+        //if (spriteRenderer == null || destroyedSpriteRenderer == null)
+        //{
+        //    Debug.LogError("SpriteRenderer component not found!");
+        //}
         //attackPattern[0].SetActive(true);
     }
     private void Update()
@@ -51,6 +62,12 @@ public class Destructable : MonoBehaviour
 
         }
     }
+
+    //IEnumerator DestroyObjectAfterDelay(float delay)
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    Destroy(gameObject);
+    //}
 
     public void BossHealth()
     {
