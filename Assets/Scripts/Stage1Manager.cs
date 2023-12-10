@@ -35,7 +35,8 @@ public class Stage1Manager : MonoBehaviour
     //private float midbossTimer = 0f;
     public bool timeActive = false;
     private int lastSecondLogged = -1;
-    private bool midbossDead = false;
+    //private bool midbossDead = false;
+    //private bool bossDead = false;
 
     void Start()
     {
@@ -63,7 +64,7 @@ public class Stage1Manager : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (timeActive)
         {
@@ -96,12 +97,12 @@ public class Stage1Manager : MonoBehaviour
             Invoke("Boss", 5f);
         }
 
-        if (bossEnemy.GetComponent<Destructable>().hitpoints <= 1f)
+        if (IsDestroyed(bossEnemy))
         {
             Boss2();
         }
 
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 1f)
+        if (IsDestroyed(bossEnemy2)) 
         {
             Boss3();
         }
@@ -119,6 +120,11 @@ public class Stage1Manager : MonoBehaviour
         } //Debug Timer that counts seconds via Update
 
         //Put trigger checks for midboss, Formation D, and Boss endings here...
+    }
+
+    bool IsDestroyed(GameObject dead)
+    {
+        return dead == null;
     }
 
     void FormationA() //[A1, A2]: Black Fairies shmoove across from the top screen and then off to the side in symmetrical but delayed waves
@@ -166,7 +172,7 @@ public class Stage1Manager : MonoBehaviour
             if(GameObject.FindGameObjectsWithTag("midboss") == null)
             {
                 timeActive = true;
-                midbossDead = true;
+                //midbossDead = true;
                 midboss.SetActive(false);
             }
         }
@@ -200,32 +206,18 @@ public class Stage1Manager : MonoBehaviour
 
     void Boss2()
     {
-        if (boss2 != null)
-        {
-            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss1.SetActive(false);
-            bossEnemy.SetActive(false);
-            boss2.SetActive(true);
-            bossEnemy2.SetActive(true);
-            timeActive = false;
-        }
-        else
-            Debug.Log("Debug Warning: boss not assigned.");
+        //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+        boss2.SetActive(true);
+        bossEnemy2.SetActive(true);
+        timeActive = false;
     }
 
     void Boss3()
     {
-        if (boss2 != null)
-        {
-            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss2.SetActive(false);
-            bossEnemy2.SetActive(false);
-            boss3.SetActive(true);
-            bossEnemy3.SetActive(true);
-            timeActive = false;
-        }
-        else
-            Debug.Log("Debug Warning: boss not assigned.");
+        //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+        boss3.SetActive(true);
+        bossEnemy3.SetActive(true);
+        timeActive = false;
     }
 
     void BulletDestroy()
