@@ -9,11 +9,13 @@ public class PlayerControl : MonoBehaviour
     public float focusSpeed;
     public Rigidbody2D playerRB;
     public GameObject hitbox;
+    public Animator animator;
     private GameObject player;
     private Vector2 lastKnownPlayerPosition;
     private float playerX;
     private float playerY;
     private Vector2 spawnPoint;
+
 
 
     [Header("Player Shooting")]
@@ -52,6 +54,7 @@ public class PlayerControl : MonoBehaviour
         playerY = player.transform.position.y;
         moveSpeed = regularSpeed;
         hitbox.SetActive(false);
+        animator = GetComponentInChildren<Animator>();
         gunTier = 1;
         lives = 3;
         bombs = 2;
@@ -84,6 +87,21 @@ public class PlayerControl : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
+
+        //Animations for moving left and right
+        if (moveX < 0)
+        {
+            animator.SetBool("isLeft", true);
+        }
+        else if (moveX > 0)
+        {
+            animator.SetBool("isRight", true);
+        }
+        else
+        {
+            animator.SetBool("isLeft", false);
+            animator.SetBool("isRight", false);
+        }
 
         //Calculates Focus mode on shift press
         if (Input.GetKey(KeyCode.LeftShift))

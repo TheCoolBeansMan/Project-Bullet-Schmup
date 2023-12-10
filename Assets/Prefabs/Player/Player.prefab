@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8721060539646267035}
   - component: {fileID: 4511801351381797876}
+  - component: {fileID: 2975028969183228995}
   m_Layer: 0
   m_Name: FeiSprite
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2975028969183228995
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695930593325819786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfd2ceb42f7c72f4182a73912db67347, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1702890399456301140
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +404,7 @@ Transform:
   - {fileID: 5518563753118412566}
   - {fileID: 3173447504968946833}
   m_Father: {fileID: 0}
-  m_RootOrder: -2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1581283477239932767
 Rigidbody2D:
@@ -427,6 +449,7 @@ MonoBehaviour:
   focusSpeed: 5.5
   playerRB: {fileID: 1581283477239932767}
   hitbox: {fileID: 7140630406229147487}
+  animator: {fileID: 0}
   bulletSpawnPointList:
   - {fileID: 272302031623448288}
   - {fileID: 246027224677971767}
@@ -458,6 +481,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  grazeZone: {fileID: 0}
+  deathZone: {fileID: 0}
+  rend: {fileID: 0}
+  scoreTracker: {fileID: 0}
 --- !u!1 &4803705421643677397
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3173447504968946833}
   - component: {fileID: 8166699559415829033}
+  - component: {fileID: 8672363527486855415}
   m_Layer: 0
   m_Name: GrazeOutline
   m_TagString: Untagged
@@ -483,12 +511,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4803705421643677397}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0400002, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1221808341540560780}
-  m_RootOrder: -2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8166699559415829033
 SpriteRenderer:
@@ -542,6 +570,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8672363527486855415
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803705421643677397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4944832176154286908
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5518563753118412566}
   - component: {fileID: 8103023579371000587}
+  - component: {fileID: 387338434705995265}
   m_Layer: 0
   m_Name: HitboxIndicator
   m_TagString: HBR
@@ -719,6 +769,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &387338434705995265
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7140630406229147487}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56fd053f3ef230346af581a5dd9700f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7262359791993885606
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1063,8 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   bombSlider: {fileID: 0}
   powerSlider: {fileID: 0}
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
   glow: {fileID: 4803705421643677397}
   healthGraze: 1
   bombGraze: 2
@@ -1000,6 +1073,8 @@ MonoBehaviour:
   bombDecrease: 5
   powerDecrease: 5
   player: {fileID: 4554721895514934442}
+  score: 0
+  highScore: 0
 --- !u!1 &8648106051982575336
 GameObject:
   m_ObjectHideFlags: 0

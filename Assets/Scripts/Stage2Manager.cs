@@ -24,7 +24,7 @@ public class Stage2Manager : MonoBehaviour
     public GameObject enemyI3;
     public GameObject enemyI4;
     public GameObject enemyI5;
-    public GameObject enemyJ;
+    //public GameObject enemyJ;
 
     public GameObject boss;
     public GameObject bossEnemy;
@@ -34,16 +34,19 @@ public class Stage2Manager : MonoBehaviour
     public GameObject bossEnemy3;
     public GameObject boss4;
     public GameObject bossEnemy4;
-    public GameObject boss5;
-    public GameObject bossEnemy5;
+    //public GameObject boss5;
+    //public GameObject bossEnemy5;
 
-    public Destructable currentHP;
+    //public Destructable currentHP;
 
     private float timer = 0f;
     //private float midbossTimer = 0f;
     public bool timeActive = false;
     private int lastSecondLogged = -1;
     private bool midbossDead = false;
+
+    private GameObject[] bulletsOnScreen;
+    public GameObject scoreTracker;
 
 
     void Start()
@@ -66,14 +69,14 @@ public class Stage2Manager : MonoBehaviour
         boss.SetActive(false);
         boss2.SetActive(false);
         boss3.SetActive(false);
-        enemyJ.SetActive(false);
+        //enemyJ.SetActive(false);
         boss4.SetActive(false);
-        boss5.SetActive(false);
+        //boss5.SetActive(false);
 
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (timeActive)
         {
@@ -166,19 +169,19 @@ public class Stage2Manager : MonoBehaviour
             Boss2();
         }
 
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 10f)
+        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
         {
             Boss3();
         }
 
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
+        if (bossEnemy3.GetComponent<Destructable>().hitpoints <= 5f)
         {
             Boss4();
         }
 
         if (bossEnemy4.GetComponent<Destructable>().hitpoints <= 5f)
         {
-            Boss5();
+            BulletDestroy();
         }
 
 
@@ -283,10 +286,27 @@ public class Stage2Manager : MonoBehaviour
             Debug.Log("Debug Warning: enemyD not assigned.");
     }
 
+    float bossTimer;
+    Vector2 bossPos;
     void Boss() //Vivia appears again for proper fight
     {
+        bossTimer = Time.deltaTime;
         if (boss != null)
         {
+            //if (bossTimer % 15 == 0)
+            //{
+            //    bossPos = bossEnemy.transform.position;
+            //    bossPos.x += 3;
+            //    bossPos.y += 0;
+            //    bossEnemy.transform.position = bossPos;
+            //}
+            //if (bossTimer % 20 == 0)
+            //{
+            //    bossPos = bossEnemy.transform.position;
+            //    bossPos.x -= 3;
+            //    bossPos.y -= 0;
+            //    bossEnemy.transform.position = bossPos;
+            //}
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
             boss.SetActive(true);
             timeActive = false;
@@ -297,6 +317,21 @@ public class Stage2Manager : MonoBehaviour
 
     void Boss2()
     {
+        //if (bossTimer % 15 == 0)
+        //{
+        //    bossPos = bossEnemy.transform.position;
+        //    bossPos.x += 3;
+        //    bossPos.y += 0;
+        //    bossEnemy.transform.position = bossPos;
+        //}
+        //if (bossTimer % 20 == 0)
+        //{
+        //    bossPos = bossEnemy.transform.position;
+        //    bossPos.x -= 3;
+        //    bossPos.y -= 0;
+        //    bossEnemy.transform.position = bossPos;
+        //}
+
         if (boss2 != null)
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
@@ -311,13 +346,14 @@ public class Stage2Manager : MonoBehaviour
 
     void Boss3()
     {
+        bossTimer = 0;
         if (boss3 != null)
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
             boss2.SetActive(false);
             boss3.SetActive(true);
             bossEnemy3.SetActive(true);
-            enemyJ.SetActive(true);
+            //enemyJ.SetActive(true);
             timeActive = false;
         }
         else
@@ -326,30 +362,52 @@ public class Stage2Manager : MonoBehaviour
 
     void Boss4()
     {
+        bossTimer = 0;
         if (boss4 != null)
         {
             //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
             boss3.SetActive(false);
             boss4.SetActive(true);
             bossEnemy4.SetActive(true);
-            enemyJ.SetActive(false);
+            //enemyJ.SetActive(false);
             timeActive = false;
         }
         else
             Debug.Log("Debug Warning: boss not assigned.");
     }
 
-    void Boss5()
+    void BulletDestroy()
     {
-        if (boss5 != null)
+        scoreTracker.GetComponent<MeterManager>().score += 001000;
+        //Trigger Animation
+        bulletsOnScreen = GameObject.FindGameObjectsWithTag("RedBullet");
+        for (int i = 0; i < bulletsOnScreen.Length; i++)
         {
-            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss4.SetActive(false);
-            boss5.SetActive(true);
-            bossEnemy5.SetActive(true);
-            timeActive = false;
+            Destroy(bulletsOnScreen[i]);
         }
-        else
-            Debug.Log("Debug Warning: boss not assigned.");
+        bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlueBullet");
+        for (int i = 0; i < bulletsOnScreen.Length; i++)
+        {
+            Destroy(bulletsOnScreen[i]);
+        }
+        bulletsOnScreen = GameObject.FindGameObjectsWithTag("BlackBullet");
+        for (int i = 0; i < bulletsOnScreen.Length; i++)
+        {
+            Destroy(bulletsOnScreen[i]);
+        }
     }
+
+    //void Boss5()
+    //{
+    //    if (boss5 != null)
+    //    {
+    //        //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+    //        boss4.SetActive(false);
+    //        boss5.SetActive(true);
+    //        bossEnemy5.SetActive(true);
+    //        timeActive = false;
+    //    }
+    //    else
+    //        Debug.Log("Debug Warning: boss not assigned.");
+    //}
 }
