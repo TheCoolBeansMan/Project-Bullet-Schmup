@@ -30,12 +30,17 @@ public class Dialogue : MonoBehaviour
 
     private void Update()
     {
+        if (dialogueActivated == true)
+        {
+            dialogueCanvas.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.Z) && dialogueActivated == true)
         {
             if (step >= speaker.Length)
             {
                 Destroy(dialogueCanvas);
                 nextStage.SetActive(true);
+                Destroy(this.gameObject);
             }
             dialogueCanvas.SetActive(true);
             speakerText.text = speaker[step];

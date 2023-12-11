@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Stage1ManagerRestore : MonoBehaviour
 {
+    public GameObject dialogueManagerPreFight;
+    public GameObject dialogueManagerPostFight;
+
     public GameObject enemyA1;
     public GameObject enemyA2;
     public GameObject enemyB1;
@@ -91,6 +94,12 @@ public class Stage1ManagerRestore : MonoBehaviour
         {
             Boss3();
         }
+
+        if (bossEnemy3 == null)
+        {
+            dialogueManagerPostFight.GetComponent<Dialogue>().dialogueActivated = true;
+        }
+
         int currentSecond = Mathf.FloorToInt(timer);
         if (currentSecond != lastSecondLogged)
         {
@@ -159,15 +168,19 @@ public class Stage1ManagerRestore : MonoBehaviour
     }
     void Boss()
     {
-        if (boss1 != null)
+        dialogueManagerPreFight.GetComponent<Dialogue>().dialogueActivated = true;
+        if (dialogueManagerPreFight == null)
         {
-            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-            boss1.SetActive(true);
-            bossEnemy.SetActive(true);
-            timeActive = false;
+            if (boss1 != null)
+            {
+                //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+                boss1.SetActive(true);
+                bossEnemy.SetActive(true);
+                timeActive = false;
+            }
+            else
+                Debug.Log("Debug Warning: boss not assigned.");
         }
-        else
-            Debug.Log("Debug Warning: boss not assigned.");
     }
     void Boss2()
     {

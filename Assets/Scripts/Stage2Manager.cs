@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Stage2Manager : MonoBehaviour
 {
+    public GameObject dialogueManagerPreFight;
+    public GameObject dialogueManagerPostFight;
+
     public GameObject enemyE;
     public GameObject enemyF; 
     public GameObject enemyG;
@@ -179,12 +182,15 @@ public class Stage2Manager : MonoBehaviour
             Boss4();
         }
 
-        if ((bossEnemy == null && bossEnemy2 == null && bossEnemy3 == null && bossEnemy4 == null))
+        /*if ((bossEnemy == null && bossEnemy2 == null && bossEnemy3 == null && bossEnemy4 == null))
         {
             BulletDestroy();
+        }*/
+
+        if (bossEnemy4 == null)
+        {
+            dialogueManagerPostFight.GetComponent<Dialogue>().dialogueActivated = true;
         }
-
-
 
         int currentSecond = Mathf.FloorToInt(timer);
         if (currentSecond != lastSecondLogged)
@@ -290,10 +296,14 @@ public class Stage2Manager : MonoBehaviour
     //Vector2 bossPos;
     void Boss()
     {
-        //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
-        boss1.SetActive(true);
-        bossEnemy.SetActive(true);
-        timeActive = false;
+        dialogueManagerPreFight.GetComponent<Dialogue>().dialogueActivated = true;
+        if (dialogueManagerPreFight == null)
+        {
+            //code needs to be modified for boss patterns to engage AFTER dialogue is finished.
+            boss1.SetActive(true);
+            bossEnemy.SetActive(true);
+            timeActive = false;
+        }
     }
 
     void Boss2()
