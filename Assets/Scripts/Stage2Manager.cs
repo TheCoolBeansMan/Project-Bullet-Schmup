@@ -159,27 +159,27 @@ public class Stage2Manager : MonoBehaviour
             Debug.Log("Trigger Next Formation");
         }
 
-        if (enemyI1 == null && enemyI2 == null && enemyI3 == null && enemyI4 == null && enemyI5 == null)
+        if ((enemyI1 == null && enemyI2 == null && enemyI3 == null && enemyI4 == null && enemyI5 == null && bossEnemy != null) || Input.GetKeyDown(KeyCode.V))
         {
             Invoke("Boss", 5f);
         }
 
-        if (bossEnemy.GetComponent<Destructable>().hitpoints <= 5f)
+        if (bossEnemy == null && bossEnemy2 != null)
         {
             Boss2();
         }
 
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f || Input.GetKeyDown(KeyCode.B)) //Included a Debug button to force-spawn in the event of spawn failure
+        if ((bossEnemy == null && bossEnemy2 == null && bossEnemy3 != null) || Input.GetKeyDown(KeyCode.B)) //Included a Debug button to force-spawn in the event of spawn failure
         {
             Boss3();
         }
 
-        if (bossEnemy3.GetComponent<Destructable>().hitpoints <= 5f || Input.GetKeyDown(KeyCode.N)) //Included a Debug button to force-spawn in the event of spawn failure
+        if ((bossEnemy == null && bossEnemy2 == null && bossEnemy3 == null && bossEnemy4 != null) || Input.GetKeyDown(KeyCode.N)) //Included a Debug button to force-spawn in the event of spawn failure
         {
             Boss4();
         }
 
-        if (bossEnemy4.GetComponent<Destructable>().hitpoints <= 5f)
+        if ((bossEnemy == null && bossEnemy2 == null && bossEnemy3 == null && bossEnemy4 == null))
         {
             BulletDestroy();
         }

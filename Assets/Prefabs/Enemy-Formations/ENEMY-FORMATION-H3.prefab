@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2703619992593079719
 Transform:
   m_ObjectHideFlags: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112379167607209105}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.26, y: 10.02, z: -2.9292214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -280,6 +280,12 @@ MonoBehaviour:
   target: target
   maxHitpoints: 6
   hitpoints: 6
+  bossLives: 0
+  attackPattern: []
+  bossPhase: 0
+  bossActive: 0
+  scoreTracker: {fileID: 0}
+  replacementPrefab: {fileID: 3799001647849782767, guid: 0bfc6011b387b0a42b8b5f58710ba818, type: 3}
 --- !u!61 &4494608649073424794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -568,6 +574,12 @@ MonoBehaviour:
   target: target
   maxHitpoints: 6
   hitpoints: 6
+  bossLives: 0
+  attackPattern: []
+  bossPhase: 0
+  bossActive: 0
+  scoreTracker: {fileID: 0}
+  replacementPrefab: {fileID: 3799001647849782767, guid: 0bfc6011b387b0a42b8b5f58710ba818, type: 3}
 --- !u!61 &6462156005455295609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1174,6 +1186,12 @@ MonoBehaviour:
   target: target
   maxHitpoints: 6
   hitpoints: 6
+  bossLives: 0
+  attackPattern: []
+  bossPhase: 0
+  bossActive: 0
+  scoreTracker: {fileID: 0}
+  replacementPrefab: {fileID: 3799001647849782767, guid: 0bfc6011b387b0a42b8b5f58710ba818, type: 3}
 --- !u!61 &4121504830319766837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1462,6 +1480,12 @@ MonoBehaviour:
   target: target
   maxHitpoints: 6
   hitpoints: 6
+  bossLives: 0
+  attackPattern: []
+  bossPhase: 0
+  bossActive: 0
+  scoreTracker: {fileID: 0}
+  replacementPrefab: {fileID: 3799001647849782767, guid: 0bfc6011b387b0a42b8b5f58710ba818, type: 3}
 --- !u!61 &2900533536810448324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1750,6 +1774,12 @@ MonoBehaviour:
   target: target
   maxHitpoints: 6
   hitpoints: 6
+  bossLives: 0
+  attackPattern: []
+  bossPhase: 0
+  bossActive: 0
+  scoreTracker: {fileID: 0}
+  replacementPrefab: {fileID: 3799001647849782767, guid: 0bfc6011b387b0a42b8b5f58710ba818, type: 3}
 --- !u!61 &5483092607282675480
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2250,6 +2280,12 @@ MonoBehaviour:
   target: target
   maxHitpoints: 6
   hitpoints: 6
+  bossLives: 0
+  attackPattern: []
+  bossPhase: 0
+  bossActive: 0
+  scoreTracker: {fileID: 0}
+  replacementPrefab: {fileID: 3799001647849782767, guid: 0bfc6011b387b0a42b8b5f58710ba818, type: 3}
 --- !u!61 &8542308790744141847
 BoxCollider2D:
   m_ObjectHideFlags: 0

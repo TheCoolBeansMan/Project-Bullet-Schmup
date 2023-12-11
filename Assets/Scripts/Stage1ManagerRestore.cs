@@ -78,15 +78,16 @@ public class Stage1ManagerRestore : MonoBehaviour
         {
             FormationD();
         }
-        if (enemyD1 == null && enemyD2 == null && enemyD3 == null)
+        if (enemyD1 == null && enemyD2 == null && enemyD3 == null && bossEnemy != null)
         {
             Invoke("Boss", 5f);
         }
-        if (bossEnemy.GetComponent<Destructable>().hitpoints <= 5f)
+        if (bossEnemy == null && bossEnemy2 != null)
         {
             Boss2();
         }
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f || Input.GetKeyDown(KeyCode.B)) //Included a Debug button to force-spawn in the event of spawn failure
+
+        if ((bossEnemy == null && bossEnemy2 == null && bossEnemy3 != null) || Input.GetKeyDown(KeyCode.B)) //Included a Debug button to force-spawn in the event of spawn failure
         {
             Boss3();
         }
