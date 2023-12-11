@@ -592,7 +592,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Woah there Gamer! Your total score at the end was [SCORE]! Slow you''re
+  m_Text: 'Woah there Gamer! Your total score at the end was REALLY HIGH! Slow you''re
     roll Buddy! Well thats it for now! Look for the full game hidden under a rock
     or something! '
 --- !u!222 &853493273
