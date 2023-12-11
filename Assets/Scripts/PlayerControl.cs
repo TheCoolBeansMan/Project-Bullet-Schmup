@@ -208,6 +208,7 @@ public class PlayerControl : MonoBehaviour
             if (lives <= 0)
             {
                 Destroy(gameObject);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(5);
             }
 
             transform.position = new Vector2(0, -7);
