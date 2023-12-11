@@ -13,23 +13,12 @@ public class Destructable : MonoBehaviour
     public int bossPhase;
     public bool bossActive;
     public GameObject scoreTracker;
+    public GameObject replacementPrefab;
 
-    //public Sprite destroyedSprite;
-    //private SpriteRenderer spriteRenderer;
-    //private SpriteRenderer destroyedSpriteRenderer;
 
     private void Start()
     {
         hitpoints = maxHitpoints;
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //destroyedSpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        //destroyedSpriteRenderer.sprite = destroyedSprite;
-        //destroyedSpriteRenderer.enabled = false;
-        //if (spriteRenderer == null || destroyedSpriteRenderer == null)
-        //{
-        //    Debug.LogError("SpriteRenderer component not found!");
-        //}
-        //attackPattern[0].SetActive(true);
     }
     private void Update()
     {
@@ -56,6 +45,7 @@ public class Destructable : MonoBehaviour
             else if (this.gameObject.CompareTag("Enemy") && hitpoints <= 0)
             {
                 scoreTracker.GetComponent<MeterManager>().score += 000100;
+                ReplaceDestroyedEnemy();
                 Destroy(gameObject);
             }
 
@@ -63,11 +53,18 @@ public class Destructable : MonoBehaviour
         }
     }
 
-    //IEnumerator DestroyObjectAfterDelay(float delay)
-    //{
-    //    yield return new WaitForSeconds(delay);
-    //    Destroy(gameObject);
-    //}
+    private void ReplaceDestroyedEnemy()
+    {
+        if (replacementPrefab != null)
+        {
+            GameObject deadAnim = Instantiate(replacementPrefab, transform.position, transform.rotation);
+        }
+        else
+        {
+            Debug.LogWarning("Replacement prefab not assigned!");
+        }
+    }
+
 
     public void BossHealth()
     {
@@ -82,6 +79,7 @@ public class Destructable : MonoBehaviour
 
         if (bossLives <= 0)
         {
+            ReplaceDestroyedEnemy();
             Destroy(gameObject);
             bossActive = false;
             scoreTracker.GetComponent<MeterManager>().score += 005000;

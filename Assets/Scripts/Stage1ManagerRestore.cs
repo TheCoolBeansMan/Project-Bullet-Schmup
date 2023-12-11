@@ -14,6 +14,9 @@ public class Stage1ManagerRestore : MonoBehaviour
     public GameObject midboss;
     public GameObject midbossEnemy;
     public GameObject enemyD;
+    public GameObject enemyD1;
+    public GameObject enemyD2;
+    public GameObject enemyD3;
     public GameObject boss1;
     public GameObject boss2;
     public GameObject boss3;
@@ -71,19 +74,19 @@ public class Stage1ManagerRestore : MonoBehaviour
         {
             Midboss();
         }
-        if (midbossEnemy == null && timer >= 30f) //Needs to be changed so that this triggers upon boss defeat
+        if (midbossEnemy == null && timer >= 30f)
         {
             FormationD();
         }
-        if (enemyD == null || timer > 58f)
+        if (enemyD1 == null && enemyD2 == null && enemyD3 == null)
         {
-            Boss();
+            Invoke("Boss", 5f);
         }
         if (bossEnemy.GetComponent<Destructable>().hitpoints <= 5f)
         {
             Boss2();
         }
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
+        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f || Input.GetKeyDown(KeyCode.B)) //Included a Debug button to force-spawn in the event of spawn failure
         {
             Boss3();
         }

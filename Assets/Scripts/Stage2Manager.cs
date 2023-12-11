@@ -169,12 +169,12 @@ public class Stage2Manager : MonoBehaviour
             Boss2();
         }
 
-        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f)
+        if (bossEnemy2.GetComponent<Destructable>().hitpoints <= 5f || Input.GetKeyDown(KeyCode.B)) //Included a Debug button to force-spawn in the event of spawn failure
         {
             Boss3();
         }
 
-        if (bossEnemy3.GetComponent<Destructable>().hitpoints <= 5f)
+        if (bossEnemy3.GetComponent<Destructable>().hitpoints <= 5f || Input.GetKeyDown(KeyCode.N)) //Included a Debug button to force-spawn in the event of spawn failure
         {
             Boss4();
         }
