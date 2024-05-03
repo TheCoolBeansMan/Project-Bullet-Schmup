@@ -79,7 +79,7 @@ public class Stage2Manager : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (timeActive)
         {

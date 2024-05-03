@@ -58,7 +58,7 @@ public class Stage1ManagerRestore : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (timeActive)
         {
